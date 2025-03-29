@@ -6,11 +6,10 @@
 
 */
 
-#ifndef TOKEN_H
-#define TOKEN_H
+#ifndef LEXER_H
+#define LEXER_H
 
 //keywords
-#define TOK_AND         1000
 #define TOK_CLASS       1001
 #define TOK_ELSE        1002
 #define TOK_FALSE       1003
@@ -18,7 +17,7 @@
 #define TOK_FUN         1005
 #define TOK_IF          1006
 #define TOK_NIL         1007
-#define TOK_OR          1008
+//#define TOK_OR          1008 dont think there is a keyword OR, might have to check
 #define TOK_PRINT       1009
 #define TOK_RETURN      1010
 #define TOK_SUPER       1011

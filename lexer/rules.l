@@ -8,16 +8,18 @@
 %option yylineno
 %option noyywrap
 %{
-    #include "token.h"
+    #include "lexer.h"
     int line_number = 1;
 
 %}
 
 %%
 
+\/\/.* 
+
 "class"         {return TOK_CLASS;}
-"else:          {return TOK_ELSE;}
-"false"         {return TOK_FALSE:}
+"else:"         {return TOK_ELSE;}
+"false"         {return TOK_FALSE;}
 "for"           {return TOK_FOR;}
 "fun"           {return TOK_FUN;}
 "if"            {return TOK_IF;}
@@ -63,9 +65,7 @@
 \"[^\n]{81,}\"      {return TOK_UNKNOWN;}
 [A-Z][A-Z0-9]{0,16} {return TOK_IDENT;}
 [A-Z][A-Z0-9]{17,}  {return TOK_UNKNOWN;}
-
-\{[^\n]+\} 
-
+ 
 [ \t\r]+
 
 [\n]        {line_number++;}
@@ -75,3 +75,4 @@
 .           { return TOK_UNKNOWN; }
 
 %%
+
