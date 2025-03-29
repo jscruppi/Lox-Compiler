@@ -1,0 +1,12 @@
+Project intended to learn the inner workings of compilers and how they operate.
+
+Goal is to write a compiler for the LOX Language. Details for this can be found at:
+https://craftinginterpreters.com/the-lox-language.html#top 
+
+Currently have:
+    The lexical anaylzer (thanks to flex)
+
+Wokring on now:
+    The parser
+
+All of this is planned to be implemented in C (because to heck with C++)
