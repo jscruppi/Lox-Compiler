@@ -18,7 +18,7 @@
 \/\/.* 
 
 "class"         {return TOK_CLASS;}
-"else:"         {return TOK_ELSE;}
+"else"         {return TOK_ELSE;}
 "false"         {return TOK_FALSE;}
 "for"           {return TOK_FOR;}
 "fun"           {return TOK_FUN;}
@@ -28,7 +28,7 @@
 "print"         {return TOK_PRINT;}
 "return"        {return TOK_RETURN;}
 "super"         {return TOK_SUPER;}
-"this"          {return TOK_SUPER;}
+"this"          {return TOK_THIS;}
 "true"          {return TOK_TRUE;}
 "var"           {return TOK_VAR;}
 "while"         {return TOK_WHILE;}

@@ -70,7 +70,7 @@ int main(int argc, char* argv[]){
             case TOK_OPENBRACE:         token_str = (char*)"TOK_OPENBRACE"; break;
             case TOK_CLOSEBRACE:        token_str = (char*)"TOK_CLOSEBRACE"; break;
             case TOK_SEMICOLON:         token_str = (char*)"TOK_SEMICOLON"; break;
-            case TOK_COMMA:             token_str = (char*)"TOK_SEMICOLON"; break;
+            case TOK_COMMA:             token_str = (char*)"TOK_COMMA"; break;
             case TOK_DOT:               token_str = (char*)"TOK_DOT"; break;
             case TOK_OPENBRACK:         token_str = (char*)"TOK_OPENBRACK"; break;
             case TOK_CLOSEBRACK:        token_str = (char*)"TOK_CLOSEBRACK"; break;
