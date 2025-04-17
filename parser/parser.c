@@ -139,12 +139,12 @@ void program(){
     //any # of declarations
     while(startOfDec() && nextToken != TOK_EOF){
         if(print_debug)output("Declaration");
-        lex();
+        //lex();
         declaration();
     }
 
     if(print_debug)output("EOF");
-    lex(); // not sure if we need to move it after this
+    //lex(); // not sure if we need to move it after this
 
     level--;
     if(print_debug)printf("%s exit <program>\n", psp());

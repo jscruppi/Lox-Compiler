@@ -12,6 +12,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 add_library(lexer_obj OBJECT ${FLEX_LEXER_OUTPUTS})
 
 #create final exectuable
-add_library(LOX_LEXER
+add_library(LOX_LEXER STATIC
     $<TARGET_OBJECTS:lexer_obj>
     )
+
+target_include_directories(LOX_LEXER PUBLIC ${CMAKE_CURRENT_SORUCE_DIR})

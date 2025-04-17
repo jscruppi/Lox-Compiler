@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include "lexer/lexer.h"
+#include "parser/parser.h"
 
 // Instantiate global variables
 extern FILE *yyin;   // input stream

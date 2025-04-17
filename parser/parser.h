@@ -9,14 +9,14 @@
 
 #include <stdio.h>
 #include "HashSet.h"
-//#include "lexer/lexer.h"
+#include "lexer/lexer.h"
 
 #define BUFF_SIZE 1024
 
 extern HashSet* symbolTable;
 extern int nextToken;
 extern int yylex(); //generated lexical analyzer
-extern char* yytext(); //text of current lexeme
+extern char *yytext(); //text of current lexeme
 
 //helper functions
 char* psp(void);
