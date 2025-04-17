@@ -8,7 +8,7 @@
 #endif
 
 #include <stdio.h>
-#include "lexer.h"
+#include "lexer/lexer.h"
 
 // Instantiate global variables
 extern FILE *yyin;   // input stream

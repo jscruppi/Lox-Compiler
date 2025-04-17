@@ -1,0 +1,11 @@
+class Foo {
+  init(x) {
+    this.x = x;
+  }
+}
+
+fun bar() {
+  for (var i = 0; i < 10; i = i + 1) {
+    print i;
+  }
+}
