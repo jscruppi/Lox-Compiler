@@ -9,6 +9,7 @@
 #include "parser.h"
 #include "lexer/lexer.h"
 #include <string.h>
+#include <assert.h>
 
 int nextToken = 0;
 char* idName;
@@ -20,8 +21,12 @@ static int level = 0; //tells us what level of parse tree we are in
 HashSet* symbolTable = NULL; //will have to initalize in the main function
 
 // Indent to reveal tree structure
+// TODO : make a method that does this locally 
+// return a pointer to a printf statement is mem leak
+// use part 3's version where method prints the spaces instead
 char* psp(void) { 
-    char str[BUFF_SIZE];
+    //char str[BUFF_SIZE];
+    char *str = malloc(sizeof(char) * BUFF_SIZE);
     int check;
 
     for(int i = 0; i < level; i++){
