@@ -25,8 +25,8 @@ int main(int argc, char **argv){
         yyin = fopen(argv[1], "r"); 
     }
     else {
-        printf("INFO: Using the sample.pas file for input\n");
-        yyin = fopen("sample.pas", "r");
+        printf("INFO: Using stdin for input\n");
+        yyin = stdin;
     }
   
     if (!yyin) {
@@ -42,8 +42,8 @@ int main(int argc, char **argv){
 
     // start the parser
     // Process the expected production
-    program();  
-    //factor(); // Build bottom-up to <expression>
+    //program();  
+    primary(); // Build bottom-up to <expression>
 
     if (nextToken != TOK_EOF)
        printf("Still have more to parse in the file\n"); 

@@ -101,6 +101,8 @@ int lex(){
         case TOK_FLOAT:             token_str = (char*)"FLOAT"; break;
         case TOK_IDENT:             token_str = (char*)"IDENT"; break;
 
+        case TOK_EOF:               token_str = (char*)"==EOF==";break;
+
         default:                    
             printf("Token: |%s|\n", yytext);
             //error msg here 
@@ -163,6 +165,78 @@ void declaration(){
 
     level--;
     if(print_debug){psp(); printf("exit <Declaration>\n");}
+}
+
+void expression(){}
+
+void primary(){
+
+    if(print_debug){psp(); printf("enter <primary>\n");}
+    level++;
+
+    switch(nextToken){
+
+        case TOK_TRUE:
+            if(print_debug)output("true");
+            lex();
+            break;
+
+        case TOK_FALSE:
+            if(print_debug)output("false");
+            lex();
+            break;
+
+        case TOK_NIL:
+            if(print_debug)output("nil");
+            lex();
+            break;
+
+        case TOK_THIS:
+            if(print_debug)output("this");
+            lex();
+            break;
+
+        case TOK_INT:
+            if(print_debug)output("INTLIT");
+            lex();
+            break;
+
+        case TOK_FLOAT:
+            if(print_debug)output("FLOATLIT");
+            lex();
+            break;
+
+        case TOK_IDENT:
+            if(print_debug)output("IDENTIFIER");
+            lex();
+            break;
+
+        case TOK_OPENPAREN:
+            if(print_debug)output("open-paren");
+            lex();
+            if(print_debug)output("expression");
+            expression();
+            if(print_debug)output("close-paren");
+            lex();
+            break;
+
+        case TOK_SUPER:
+            if(print_debug)output("super");
+            lex();
+            if(print_debug)output(".");
+            lex();
+            if(print_debug)output("IDENTIFIER");
+            lex();
+            break;
+
+        default:
+            printf("In primary -- found incorrect token\n");
+            exit(EXIT_FAILURE);
+            break;
+    } 
+
+    level--;
+    if(print_debug){psp(); printf("exit <primary>\n");}
 }
 
 

@@ -30,6 +30,12 @@ int lex();
 void program();
 void declaration();
 
+
+// Expressions
+// Will start developing from the bottom up
+void expression();
+void primary();
+
 //will have to decide if we declare error checks here or other file
 //im leaning other file
 
