@@ -24,39 +24,15 @@ HashSet* symbolTable = NULL; //will have to initalize in the main function
 // TODO : make a method that does this locally 
 // return a pointer to a printf statement is mem leak
 // use part 3's version where method prints the spaces instead
-char* psp(void) { 
-    //char str[BUFF_SIZE];
-    char *str = malloc(sizeof(char) * BUFF_SIZE);
-    int check;
-
-    for(int i = 0; i < level; i++){
-        //asserts are here so I dont lose my mind when debugging
-        check = appendChar(str,  '|', strlen(str));
-        assert(check != -1);
-        check = appendChar(str,  ' ', strlen(str));
-        assert(check != -1);
-        check = appendChar(str,  ' ', strlen(str));
-        assert(check != -1);
-    }
-    return str;
-}
-
-//used in psp, need to append chars to buffer
-int appendChar(char *str, const char c, size_t buffer_size){
-    size_t len = strlen(str);
-
-    if(len + 1 < buffer_size){
-        str[len] = c;
-        str[len+1] = '\0';
-        return len + 1;
-    }
-    else
-        return -1;   
+void psp() { 
+    for(int i = 0; i < level; i++)
+        printf("|  ");
 }
 
 //reports the current lexeme found
 void output(char* what){
-    printf("%s found |%s| %s\n", psp(), yytext, what);
+    psp();
+    printf(" found |%s| %s\n", yytext, what);
 }
 
 //checks if current token is statement
@@ -126,7 +102,7 @@ int lex(){
         case TOK_IDENT:             token_str = (char*)"IDENT"; break;
 
         default:                    
-            printf("Token: |%s|\n", nextToken);
+            printf("Token: |%s|\n", yytext);
             //error msg here 
     }
 
@@ -135,10 +111,10 @@ int lex(){
 
 void program(){
 
-    if(print_debug)("PROGRAM");
-    lex();
+    //if(print_debug)output("PROGRAM");
+    //lex();
     
-    if(print_debug)printf("%s enter <program>\n", psp());
+    if(print_debug){psp(); printf("enter <program>\n");}
     level++;
 
     //any # of declarations
@@ -148,16 +124,16 @@ void program(){
         declaration();
     }
 
-    if(print_debug)output("EOF");
+    //if(print_debug)output("EOF");
     //lex(); // not sure if we need to move it after this
 
     level--;
-    if(print_debug)printf("%s exit <program>\n", psp());
+    if(print_debug){psp(); printf("exit <program>\n");}
 }
 
 void declaration(){
 
-    if(print_debug)printf("%s enter <Declaration>\n", psp());
+    if(print_debug){psp(); printf("enter <Declaration>\n");}
     level++;
 
     //determine the specific declaration
@@ -186,7 +162,7 @@ void declaration(){
     }
 
     level--;
-    if(print_debug)printf("%s exit <Declaration>\n", psp());
+    if(print_debug){psp(); printf("exit <Declaration>\n");}
 }
 
 

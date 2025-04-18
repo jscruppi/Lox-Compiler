@@ -17,9 +17,37 @@ extern int yylex();  // the generated lexical analyzer
 
 extern int nextToken; // token returned from yylex
 
-
-
 int main(int argc, char **argv){
-    printf("Dirs are working\n");
+
+    // Set the input stream
+    if (argc > 1) {
+        printf("INFO: Using the %s file for input\n", argv[1]);
+        yyin = fopen(argv[1], "r"); 
+    }
+    else {
+        printf("INFO: Using the sample.pas file for input\n");
+        yyin = fopen("sample.pas", "r");
+    }
+  
+    if (!yyin) {
+        printf("ERROR: input file not found\n");
+        return EXIT_FAILURE;
+    }
+
+    // set output stream
+    yyout = stdout;
+
+    // get first token
+    nextToken = yylex();
+
+    // start the parser
+    // Process the expected production
+    program();  
+    //factor(); // Build bottom-up to <expression>
+
+    if (nextToken != TOK_EOF)
+       printf("Still have more to parse in the file\n"); 
+    
+
     return 0;
 }

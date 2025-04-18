@@ -19,8 +19,7 @@ extern int yylex(); //generated lexical analyzer
 extern char *yytext; //text of current lexeme
 
 //helper functions
-char* psp(void);
-int appendChar(char* str, const char c, size_t buffer_size);
+void psp();
 void output(char* what);
 
 int startOfStatement();
