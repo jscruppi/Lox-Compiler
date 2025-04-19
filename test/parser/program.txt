@@ -1,4 +1,6 @@
 // this is a program
 // although there is no code ... 
 
-myIdent().getSomething
+//myIdent().getSomething
+
+67 * 33.3 / 45

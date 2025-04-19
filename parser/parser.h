@@ -39,6 +39,7 @@ void expression();
 void primary();
 void call();
 void unary();
+void factor();
 
 //will have to decide if we declare error checks here or other file
 //im leaning other file

@@ -48,7 +48,7 @@ int startOfExpr(){
 
 int startOfPrimary(){
     return nextToken == TOK_TRUE || nextToken == TOK_FALSE || nextToken == TOK_NIL || nextToken == TOK_THIS ||
-    nextToken == TOK_INT || nextToken == TOK_STRING || nextToken == TOK_IDENT || nextToken == TOK_OPENPAREN ||
+    nextToken == TOK_INT || nextToken == TOK_FLOAT || nextToken == TOK_STRING || nextToken == TOK_IDENT || nextToken == TOK_OPENPAREN ||
     nextToken == TOK_SUPER;
 }
 
@@ -178,6 +178,34 @@ void declaration(){
 }
 
 void expression(){}
+
+void factor(){
+
+    if(print_debug){psp(); printf("enter <factor>\n");}
+    level++;
+
+    if(print_debug)output("unary");
+    unary();
+
+    // parse however many unarys are left
+    while(nextToken == TOK_DIV || nextToken == TOK_MULT){
+        if(nextToken == TOK_DIV){
+            if(print_debug)output("/");
+            lex();
+        }
+        else{
+            if(print_debug)output("*");
+            lex();
+        }
+
+        if(print_debug)output("unary");
+        unary();
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <factor>\n");}
+
+}
 
 void unary(){
 
