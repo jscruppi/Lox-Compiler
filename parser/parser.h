@@ -44,6 +44,9 @@ void factor();
 void term();
 void comparison();
 void equality();
+void logicAnd();
+void logicOr();
+void assignment();
 
 //will have to decide if we declare error checks here or other file
 //im leaning other file

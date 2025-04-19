@@ -5,4 +5,6 @@
 
 //67 + 33.3 / 45
 
-47 != identy
+//47 != identy
+
+meclass.var = someval

@@ -182,7 +182,87 @@ void declaration(){
     if(print_debug){psp(); printf("exit <Declaration>\n");}
 }
 
-void expression(){}
+void expression(){
+
+    if(print_debug){psp(); printf("enter <expression>\n");}
+    level++;
+
+    if(print_debug)output("assignment");
+    assignment();
+
+    level--; 
+    if(print_debug){psp(); printf("exit <expression>\n");}
+}
+
+void assignment(){
+
+    if(print_debug){psp(); printf("enter <assignment>\n");}
+    level++;
+
+    if(print_debug)output("logic_or");
+    logicOr();
+
+    
+    if(nextToken == TOK_ASSIGN){
+        
+        if(print_debug)output("=");
+        lex();
+
+        if(print_debug)output("assignment");
+        assignment();
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <assignment>\n");}
+}
+
+void logicOr(){
+
+    if(print_debug){psp(); printf("enter <logic_or>\n");}
+    level++;
+
+    if(print_debug)output("logic_and");
+    logicAnd();
+
+    // parse the rest of logics
+    while(nextToken == TOK_OR){
+
+        if(print_debug)output("or");
+        lex();
+
+        if(print_debug)output("logic_and");
+        logicAnd();
+
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <logic_or>\n");}
+
+}
+
+void logicAnd(){
+
+    if(print_debug){psp(); printf("enter <logic_and>\n");}
+    level++;
+
+    if(print_debug)output("equality");
+    equality();
+
+    // parse the rest of logics
+    while(nextToken == TOK_AND){
+
+        if(print_debug)output("and");
+        lex();
+
+        if(print_debug)output("equality");
+        equality();
+
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <logic_and>\n");}
+
+}
 
 void equality(){
 
@@ -210,6 +290,7 @@ void equality(){
 
     level--;
     if(print_debug){psp(); printf("exit <equality>\n");}
+
 }
 
 void comparison(){
