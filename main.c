@@ -43,7 +43,7 @@ int main(int argc, char **argv){
     // start the parser
     // Process the expected production
     //program();  
-    comparison(); // Build bottom-up to <expression>
+    equality(); // Build bottom-up to <expression>
 
     if (nextToken != TOK_EOF)
        printf("Still have more to parse in the file\n"); 

@@ -184,6 +184,34 @@ void declaration(){
 
 void expression(){}
 
+void equality(){
+
+    if(print_debug){psp(); printf("enter <equality>\n");}
+    level++;
+
+    if(print_debug)output("comparison");
+    comparison();
+
+    while(nextToken == TOK_NOTEQUAL || nextToken == TOK_EQUAL){
+        switch(nextToken){
+            case TOK_NOTEQUAL:
+                if(print_debug)output("!=");
+                lex();
+                break;
+            case TOK_EQUAL:
+                if(print_debug)output("==");
+                lex();
+                break;
+        }
+
+        if(print_debug)output("comparison");
+        comparison();
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <equality>\n");}
+}
+
 void comparison(){
 
     if(print_debug){psp(); printf("enter <comparison>\n");}
