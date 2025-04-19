@@ -179,6 +179,37 @@ void declaration(){
 
 void expression(){}
 
+void unary(){
+
+    if(print_debug){psp(); printf("enter <unary>\n");}
+    level++;
+
+    // decide which type of unary we have
+    if(startOfPrimary()){
+        if(print_debug)output("call");
+        call();
+    }
+    else if(nextToken == TOK_NOT){
+        if(print_debug)output("!");
+        lex();
+        if(print_debug)output("unary");
+        unary();
+    }
+    else if(nextToken == TOK_MINUS){
+        if(print_debug)output("-");
+        lex();
+        if(print_debug)output("unary");
+        unary();
+    }
+    else{
+        // TODO: throw some kind of error here
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <unary>\n");}    
+
+}
+
 void call(){
 
     if(print_debug){psp(); printf("enter <call>\n");}
