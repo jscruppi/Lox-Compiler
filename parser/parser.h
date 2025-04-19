@@ -40,6 +40,7 @@ void primary();
 void call();
 void unary();
 void factor();
+void term();
 
 //will have to decide if we declare error checks here or other file
 //im leaning other file

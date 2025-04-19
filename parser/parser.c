@@ -179,6 +179,34 @@ void declaration(){
 
 void expression(){}
 
+void term(){
+
+    if(print_debug){psp(); printf("enter <term>\n");}
+    level++;
+
+    if(print_debug)output("factor");
+    factor();
+
+    // parse however many unarys are left
+    while(nextToken == TOK_MINUS || nextToken == TOK_PLUS){
+        if(nextToken == TOK_MINUS){
+            if(print_debug)output("-");
+            lex();
+        }
+        else{
+            if(print_debug)output("+");
+            lex();
+        }
+
+        if(print_debug)output("factor");
+        factor();
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <term>\n");}
+
+}
+
 void factor(){
 
     if(print_debug){psp(); printf("enter <factor>\n");}
