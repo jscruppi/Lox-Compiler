@@ -57,6 +57,11 @@ int startOfDec(){
     return nextToken == TOK_CLASS || nextToken == TOK_FUN || nextToken == TOK_VAR || startOfStatement();
 }
 
+int isCompareOp(){
+    return nextToken == TOK_GREATER || nextToken == TOK_GREATEQUAL 
+    || nextToken == TOK_LESS || nextToken == TOK_LESSEQUAL;
+}
+
 int lex(){
     char* token_str;
     
@@ -178,6 +183,44 @@ void declaration(){
 }
 
 void expression(){}
+
+void comparison(){
+
+    if(print_debug){psp(); printf("enter <comparison>\n");}
+    level++;
+
+    if(print_debug)output("term");
+    term();
+
+    // parse the rest of the comparisons
+    while(isCompareOp()){
+        switch(nextToken){
+            case TOK_LESS:
+                if(print_debug)output("<");
+                lex();
+                break;
+            case TOK_LESSEQUAL:
+                if(print_debug)output("<=");
+                lex();
+                break;
+            case TOK_GREATER:
+                if(print_debug)output(">");
+                lex();
+                break;
+            case TOK_GREATEQUAL:
+                if(print_debug)output(">=");
+                lex();
+                break;
+        }
+
+        if(print_debug)output("term");
+        term();
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <comparison>\n");}
+
+}
 
 void term(){
 

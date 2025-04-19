@@ -25,6 +25,7 @@ void output(char* what);
 int startOfStatement();
 int startOfPrimary();
 int startOfExpr();
+int isCompareOp();
 
 
 //function declarations
@@ -41,6 +42,7 @@ void call();
 void unary();
 void factor();
 void term();
+void comparison();
 
 //will have to decide if we declare error checks here or other file
 //im leaning other file
