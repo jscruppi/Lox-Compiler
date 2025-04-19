@@ -1,2 +1,3 @@
 build/
 lexer/build/
+.cache/

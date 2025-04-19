@@ -6,6 +6,9 @@ project(lox_compiler)
 # set to debug mode
 set(CMAKE_BUILD_TYPE Debug)
 
+# so lsp can find headers and such
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # add other libraries
 add_subdirectory(lexer)
 add_subdirectory(parser)

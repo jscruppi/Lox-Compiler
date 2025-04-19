@@ -23,6 +23,8 @@ void psp();
 void output(char* what);
 
 int startOfStatement();
+int startOfPrimary();
+int startOfExpr();
 
 
 //function declarations
@@ -35,6 +37,7 @@ void declaration();
 // Will start developing from the bottom up
 void expression();
 void primary();
+void call();
 
 //will have to decide if we declare error checks here or other file
 //im leaning other file

@@ -32,7 +32,7 @@ void psp() {
 //reports the current lexeme found
 void output(char* what){
     psp();
-    printf(" found |%s| %s\n", yytext, what);
+    printf("found |%s| %s\n", yytext, what);
 }
 
 //checks if current token is statement
@@ -40,6 +40,16 @@ int startOfStatement(){
     return nextToken == TOK_FOR || nextToken == TOK_IF || nextToken == TOK_PRINT || 
     nextToken == TOK_RETURN || nextToken == TOK_WHILE || nextToken == TOK_OPENBRACE;
     //TODO: need to check for first of expression
+}
+
+int startOfExpr(){
+    return startOfPrimary() || nextToken == TOK_MINUS || nextToken == TOK_NOT;
+}
+
+int startOfPrimary(){
+    return nextToken == TOK_TRUE || nextToken == TOK_FALSE || nextToken == TOK_NIL || nextToken == TOK_THIS ||
+    nextToken == TOK_INT || nextToken == TOK_STRING || nextToken == TOK_IDENT || nextToken == TOK_OPENPAREN ||
+    nextToken == TOK_SUPER;
 }
 
 //checks if current token is declaration
@@ -168,6 +178,54 @@ void declaration(){
 }
 
 void expression(){}
+
+void call(){
+
+    if(print_debug){psp(); printf("enter <call>\n");}
+    level++;
+
+    if(print_debug)output("primary");
+    primary();
+
+    // parse how ever many (args) or .ident there are
+    // this looks like a mess but not sure of how else
+    // to accomplish the parse
+    while(nextToken == TOK_OPENPAREN || nextToken == TOK_DOT){
+
+        // decide between which type of call
+        if (nextToken == TOK_OPENPAREN)
+        {
+            if (print_debug)output("open-paren");
+            lex();
+
+            // arguments => expression (, expression)*
+            if(startOfExpr()){
+                if(print_debug)output("expression");
+                expression();
+            }
+            // parse however many args
+            while(nextToken == TOK_COMMA){
+                if(print_debug)output(",");
+                lex();
+                if(print_debug)output("expression");
+                expression();
+            }
+
+            if(print_debug)output("close-paren");
+            lex();
+        }
+        else
+        {
+            if (print_debug)output(".");
+            lex();
+            if (print_debug)output("IDENTIFIER");
+            lex();
+        }
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <call>\n");}
+}
 
 void primary(){
 
