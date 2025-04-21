@@ -28,3 +28,5 @@ primary        = "true" | "false" | "nil" | "this"
 
 arguments      = expression ( "," expression )* ;
 
+assignemnt     = call "=" assignment | logic_or 
+

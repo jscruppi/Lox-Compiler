@@ -20,10 +20,8 @@ static int print_debug = 1; //flag used to print out the parsing for debugging
 static int level = 0; //tells us what level of parse tree we are in
 HashSet* symbolTable = NULL; //will have to initalize in the main function
 
-// Indent to reveal tree structure
-// TODO : make a method that does this locally 
-// return a pointer to a printf statement is mem leak
-// use part 3's version where method prints the spaces instead
+// prints out spaces depending on the level of parse
+// used for debugging purposes
 void psp() { 
     for(int i = 0; i < level; i++)
         printf("|  ");
@@ -180,6 +178,106 @@ void declaration(){
 
     level--;
     if(print_debug){psp(); printf("exit <Declaration>\n");}
+}
+
+// start of statements
+void statement(){
+
+    if(print_debug){psp(); printf("enter <statement>\n");}
+    level++;
+
+    if(nextToken == TOK_FOR){
+        // for statement
+        if(print_debug)output("for stmt");
+        //forStmt();
+    } 
+    else if(nextToken == TOK_IF){
+        // if statement
+        if(print_debug)output("if stmt");
+        ifStmt();
+    }
+    else if(nextToken == TOK_PRINT){
+        // print statement
+        if(print_debug)output("print smt");
+        printStmt();
+    }
+    else if(nextToken == TOK_RETURN){
+        // return statement
+        if(print_debug)output("return stmt");
+        //returnStmt();
+    }
+    else if(nextToken == TOK_WHILE){
+        // while statement
+        if(print_debug)output("while stmt");
+        //whileStmt();
+    }
+    else if(nextToken == TOK_OPENBRACE){
+        // block
+        if(print_debug)output("block");
+        //block();
+    }
+    else{
+        // expression
+        if(print_debug)output("expression");
+        expression();
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <statement>\n");}
+
+}
+
+void ifStmt(){
+    
+    if(print_debug){psp(); printf("enter <if_statement>\n");}
+    level++;
+
+    if(print_debug)output("if");
+    lex();
+
+    if(print_debug)output("(");
+    lex();
+
+    if(print_debug)output("expression");
+    expression();
+
+    if(print_debug)output(")");
+    lex();
+
+    if(print_debug)output("statement");
+    statement();
+
+    // optional else block
+    if(nextToken == TOK_ELSE){
+        if(print_debug)output("else");
+        lex();
+
+        if(print_debug)output("statement");
+        statement();
+    }
+
+    level--;
+    if(print_debug){psp(); printf("exit <if_statement>\n");}
+
+}
+
+void printStmt(){
+
+    if(print_debug){psp(); printf("enter <print_statement>\n");}
+    level++;
+
+    if(print_debug)output("print");
+    lex();
+
+    if(print_debug)output("expression");
+    expression();
+
+    if(print_debug)output(";");
+    lex();
+
+    level--;
+    if(print_debug){psp(); printf("exit <print_statement>\n");}
+
 }
 
 void expression(){
@@ -523,6 +621,11 @@ void primary(){
             if(print_debug)output(".");
             lex();
             if(print_debug)output("IDENTIFIER");
+            lex();
+            break;
+
+        case TOK_STRING:
+            if(print_debug)output("STRING LIT");
             lex();
             break;
 

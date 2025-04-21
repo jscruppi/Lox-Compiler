@@ -27,6 +27,15 @@ int startOfPrimary();
 int startOfExpr();
 int isCompareOp();
 
+// statement declarations
+void statement();
+void exprStmt();
+void forStmt();
+void ifStmt();
+void printStmt();
+void returnStmt();
+void whileStmt();
+void block();
 
 //function declarations
 int lex();
