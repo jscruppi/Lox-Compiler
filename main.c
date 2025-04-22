@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include "lexer/lexer.h"
 #include "parser/parser.h"
+//#include "parser/HashSet.h"
 
 // Instantiate global variables
 extern FILE *yyin;   // input stream
@@ -14,6 +15,8 @@ extern int yyleng;   // length of current lexeme
 extern char *yytext; // text of current lexeme
 extern int yylineno; // line number for current lexeme
 extern int yylex();  // the generated lexical analyzer
+
+extern HashSet *symbolTable;
 
 extern int nextToken; // token returned from yylex
 
@@ -50,5 +53,29 @@ int main(int argc, char **argv){
        printf("Still have more to parse in the file\n"); 
        printf("Current lexeme: %s\n", yytext);
     }
+
+    printf("== User Defined symbols ==\n");
+
+    // break here
+    for (int x = 0; x < symbolTable->capacity; x++) {
+        Node *current = symbolTable->buckets[x];
+        while (current != NULL)
+        { // loop through the linked list in each bucket
+            if (current->key != NULL)
+            {
+                printf("%s\n", current->key);
+            }
+            current = current->next; // move to the next node in the chain
+        }
+    }
+
+
+    if(contains(symbolTable, "Foo")){
+        printf("Contatins\n");
+    }
+
+    // free hashset
+    freeHashSet(symbolTable);
+
     return 0;
 }

@@ -15,7 +15,7 @@ int nextToken = 0;
 char* idName;
 char* idType;
 
-static int print_debug = 1; //flag used to print out the parsing for debugging
+static int print_debug = 0; //flag used to print out the parsing for debugging
 
 static int level = 0; //tells us what level of parse tree we are in
 HashSet* symbolTable = NULL; //will have to initalize in the main function
@@ -38,7 +38,6 @@ int startOfStatement(){
     return nextToken == TOK_FOR || nextToken == TOK_IF || nextToken == TOK_PRINT || 
     nextToken == TOK_RETURN || nextToken == TOK_WHILE || nextToken == TOK_OPENBRACE
     || startOfExpr();
-    //TODO: need to check for first of expression
 }
 
 int startOfExpr(){
@@ -118,8 +117,8 @@ int lex(){
         case TOK_EOF:               token_str = (char*)"==EOF==";break;
 
         default:                    
-            printf("Token: |%s|\n", yytext);
-            //error msg here 
+            printf("Unknown Token: |%s|\n", yytext);
+            exit(EXIT_FAILURE); 
     }
 
     return nextToken;
@@ -132,6 +131,9 @@ void program(){
     
     if(print_debug){psp(); printf("enter <program>\n");}
     level++;
+
+    // initalize the symboltable
+    symbolTable = createHashSet();
 
     //any # of declarations
     while(startOfDec() && nextToken != TOK_EOF){
@@ -188,6 +190,7 @@ void classDecl(){
     lex();
 
     if(print_debug)output("IDENTIFIER");
+    insert(symbolTable, yytext);
     lex();
 
     if(nextToken == TOK_LESS){
@@ -229,6 +232,7 @@ void funDecl(){
 
 void function(){
     if(print_debug)output("IDENTIFIER");
+    insert(symbolTable, yytext);
     lex();
 
     if(print_debug)output("(");
@@ -261,6 +265,7 @@ void varDecl(){
     lex();
 
     if(print_debug)output("IDENTIFIER");
+    insert(symbolTable, yytext);
     lex();
 
     if(nextToken == TOK_ASSIGN){
@@ -847,6 +852,7 @@ void primary(){
 
         case TOK_IDENT:
             if(print_debug)output("IDENTIFIER");
+            insert(symbolTable, yytext);
             lex();
             break;
 
