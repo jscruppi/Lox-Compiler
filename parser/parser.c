@@ -36,7 +36,8 @@ void output(char* what){
 //checks if current token is statement
 int startOfStatement(){
     return nextToken == TOK_FOR || nextToken == TOK_IF || nextToken == TOK_PRINT || 
-    nextToken == TOK_RETURN || nextToken == TOK_WHILE || nextToken == TOK_OPENBRACE;
+    nextToken == TOK_RETURN || nextToken == TOK_WHILE || nextToken == TOK_OPENBRACE
+    || startOfExpr();
     //TODO: need to check for first of expression
 }
 
@@ -154,30 +155,128 @@ void declaration(){
     //determine the specific declaration
     if(nextToken == TOK_CLASS){
         if(print_debug)output("Class");
-        lex();
-        //classDec();
+        classDecl();
     }
     else if(nextToken == TOK_FUN){
         if(print_debug)output("Function");
-        lex();
-        //funDec();
+        funDecl();
     }
     else if(nextToken == TOK_VAR){
         if(print_debug)output("Variable");
-        lex();
-        //varDec();
+        varDecl();
     }
     else if(startOfStatement()){
         if(print_debug)output("Statement");
-        lex();
-        //statement();
+        statement();
     }
     else{
         //need some sort of error msg here
+        printf("Misshandeled declaration()\n");
+        exit(EXIT_FAILURE);
     }
 
     level--;
     if(print_debug){psp(); printf("exit <Declaration>\n");}
+}
+
+void classDecl(){
+
+    if(print_debug){psp(); printf("enter <classDecl>\n");}
+    level++;
+
+    if(print_debug)output("class");
+    lex();
+
+    if(print_debug)output("IDENTIFIER");
+    lex();
+
+    if(nextToken == TOK_LESS){
+        if(print_debug)output("<");
+        lex();
+        if(print_debug)output("IDENTIFIER");
+        lex();
+    }
+
+    if(print_debug)output("{");
+    lex();
+
+    while(nextToken == TOK_IDENT){
+        function();
+    }
+
+    if(print_debug)output("}");
+    lex();
+
+    level--;
+    if(print_debug){psp(); printf("exit <classDecl>\n");}
+
+}
+
+void funDecl(){
+
+    if(print_debug){psp(); printf("enter <funDecl>\n");}
+    level++;
+
+    if(print_debug)output("fun");
+    lex();
+
+    function();
+
+    level--;
+    if(print_debug){psp(); printf("exit <funDecl>\n");}
+
+}
+
+void function(){
+    if(print_debug)output("IDENTIFIER");
+    lex();
+
+    if(print_debug)output("(");
+    lex();
+
+    if(nextToken == TOK_IDENT){
+        if(print_debug)output("IDENTIFIER");
+        lex();
+
+        while(nextToken == TOK_COMMA){
+            if(print_debug)output(",");
+            lex();
+            if(print_debug)output("IDENTIFIER");
+            lex();
+        }
+    }
+
+    if(print_debug)output(")");
+    lex();
+
+    if(print_debug)output("block");
+    block();
+}
+
+void varDecl(){
+    if(print_debug){psp(); printf("enter <varDecl>\n");}
+    level++;
+
+    if(print_debug)output("var");
+    lex();
+
+    if(print_debug)output("IDENTIFIER");
+    lex();
+
+    if(nextToken == TOK_ASSIGN){
+        if(print_debug)output("=");
+        lex();
+        
+        if(print_debug)output("expression");
+        expression();
+    }
+
+    if(print_debug)output(";");
+    lex();
+
+    level--;
+    if(print_debug){psp(); printf("exit <varDecl>\n");}
+
 }
 
 // start of statements
@@ -189,7 +288,7 @@ void statement(){
     if(nextToken == TOK_FOR){
         // for statement
         if(print_debug)output("for stmt");
-        //forStmt();
+        forStmt();
     } 
     else if(nextToken == TOK_IF){
         // if statement
@@ -204,22 +303,22 @@ void statement(){
     else if(nextToken == TOK_RETURN){
         // return statement
         if(print_debug)output("return stmt");
-        //returnStmt();
+        returnStmt();
     }
     else if(nextToken == TOK_WHILE){
         // while statement
         if(print_debug)output("while stmt");
-        //whileStmt();
+        whileStmt();
     }
     else if(nextToken == TOK_OPENBRACE){
         // block
         if(print_debug)output("block");
-        //block();
+        block();
     }
     else{
         // expression
-        if(print_debug)output("expression");
-        expression();
+        if(print_debug)output("expression stmt");
+        exprStmt();
     }
 
     level--;
@@ -277,6 +376,151 @@ void printStmt(){
 
     level--;
     if(print_debug){psp(); printf("exit <print_statement>\n");}
+
+}
+
+void returnStmt(){
+
+    if(print_debug){psp(); printf("enter <return_statement\n");}
+    level++;
+
+    if(print_debug)output("return");
+    lex();
+
+    if(startOfExpr()){
+        if(print_debug)output("expression");
+        expression();
+    }
+
+    if(print_debug)output(";");
+    lex();
+
+    level--;
+    if(print_debug){psp(); printf("exit <return_statement\n");}
+
+}
+
+void whileStmt(){
+
+    if(print_debug){psp(); printf("enter <while_statement\n");}
+    level++;
+
+    if(print_debug)output("while");
+    lex();
+
+    if(print_debug)output("(");
+    lex();
+
+    if(print_debug)output("expression");
+    expression();
+
+    if(print_debug)output(")");
+    lex();
+
+    if(print_debug)output("statement");
+    statement();
+
+    level--;
+    if(print_debug){psp(); printf("exit <while_statement\n");}
+
+}
+
+void block(){
+
+    if(print_debug){psp(); printf("enter <block>\n");}
+    level++;
+
+    if(print_debug)output("{");
+    lex();
+
+    while(startOfDec()){
+        if(print_debug)output("declaration");
+        declaration();
+    }
+
+    if(print_debug)output("}");
+    lex();
+
+    level--;
+    if(print_debug){psp(); printf("exit <block>\n");}
+
+}
+
+void exprStmt(){
+
+    if(print_debug){psp(); printf("enter <expression_statement\n");}
+    level++;
+
+    if(print_debug)output("expression");
+    expression();
+
+    if(print_debug)output(";");
+    lex();
+
+    level--;
+    if(print_debug){psp(); printf("exit <expression_statement\n");}
+}
+
+void forStmt(){
+
+    /*
+        Disclaimer: 
+        The function to parse a for loop is admitatley messy
+        I followed the grammar rules for lox as notated in the Appendix
+        (Section A1.1.2)
+        https://craftinginterpreters.com/appendix-i.html
+    */
+
+    if(print_debug){psp(); printf("enter <for_statement>\n");}
+    level++;
+
+    if(print_debug)output("for");
+    lex();
+
+    if(print_debug)output("(");
+    lex();
+
+    // select from 1 of 3 branches in 'for'
+    if(nextToken == TOK_VAR){
+        if(print_debug)output("var_dec");
+        varDecl();
+    }
+    else if(startOfExpr()){
+        if(print_debug)output("expr_stmt");
+        exprStmt();
+    }
+    else if(nextToken == TOK_SEMICOLON){
+        if(print_debug)output(";");
+        lex();
+    }
+    else{
+        printf("Error in forStmt()\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // expression? 
+    if(startOfExpr()){
+        if(print_debug)output("expression");
+        expression();
+
+        if(print_debug)output(";");
+        lex();
+    }
+
+    // another optional expression
+    if(startOfExpr()){
+        if(print_debug)output("expression");
+        expression();
+    }
+
+    if(print_debug)output(")");
+    lex();
+
+    if(print_debug)output("statement");
+    statement();
+
+    level--;
+    if(print_debug){psp(); printf("exit <for_statement>\n");}
 
 }
 

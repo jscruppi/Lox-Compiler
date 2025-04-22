@@ -44,11 +44,11 @@ int main(int argc, char **argv){
     // Process the expected production
     //program();  
     //expression(); // Build bottom-up to <expression>
-    statement();
+    program();
 
-    if (nextToken != TOK_EOF)
+    if (nextToken != TOK_EOF){
        printf("Still have more to parse in the file\n"); 
-    
-
+       printf("Current lexeme: %s\n", yytext);
+    }
     return 0;
 }

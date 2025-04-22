@@ -25,7 +25,17 @@ void output(char* what);
 int startOfStatement();
 int startOfPrimary();
 int startOfExpr();
+int startOfDec();
 int isCompareOp();
+
+//function declarations
+int lex();
+void program();
+void declaration();
+void classDecl();
+void funDecl();
+void varDecl();
+void function();
 
 // statement declarations
 void statement();
@@ -36,12 +46,6 @@ void printStmt();
 void returnStmt();
 void whileStmt();
 void block();
-
-//function declarations
-int lex();
-void program();
-void declaration();
-
 
 // Expressions
 // Will start developing from the bottom up

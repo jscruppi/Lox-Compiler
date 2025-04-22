@@ -7,8 +7,4 @@
 
 //47 != identy
 
-//meclass.var = someval
-if( x < 5) 
-    print "Too small";
-else
-    print "Yeah!";
+while(x > 10) return something;
