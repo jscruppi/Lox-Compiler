@@ -1,0 +1,78 @@
+\hypertarget{parser_8h_source}{}\doxysection{parser.\+h}
+\label{parser_8h_source}\index{parser/parser.h@{parser/parser.h}}
+\mbox{\hyperlink{parser_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    Header file for the parser}}
+\DoxyCodeLine{3 \textcolor{comment}{    Contains all function definitions}}
+\DoxyCodeLine{4 \textcolor{comment}{}}
+\DoxyCodeLine{5 \textcolor{comment}{*/}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef PARSER\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define PARSER\_H}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{HashSet_8h}{HashSet.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{lexer_8h}{lexer/lexer.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define BUFF\_SIZE 1024}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{extern} \mbox{\hyperlink{structHashSet}{HashSet}}* \mbox{\hyperlink{parser_8h_a6ed601495db25bb39a713c96077e80d5}{symbolTable}}; }
+\DoxyCodeLine{17 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{parser_8h_ac8fdbf58f8a9e729296082358dc8c874}{nextToken}}; }
+\DoxyCodeLine{18 \textcolor{keyword}{extern} \textcolor{keywordtype}{char} *\mbox{\hyperlink{parser_8h_ad9264b77d56b6971f29739e2bda77f51}{yytext}}; }
+\DoxyCodeLine{20 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{parser_8h_aa40b27ae32d6d1ae7160bd6256e08eb8}{yylex}}(); }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{23 \textcolor{comment}{// helper functions}}
+\DoxyCodeLine{25 \textcolor{comment}{}}
+\DoxyCodeLine{27 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a678e3a09580d2b82c994856227fee469}{psp}}();}
+\DoxyCodeLine{29 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_aa64897aae26deb88d2d536edd7691056}{output}}(\textcolor{keywordtype}{char}* what);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{32 \textcolor{keywordtype}{int} \mbox{\hyperlink{parser_8h_a483e77010c5c206a95a7ca586de449db}{startOfStatement}}();}
+\DoxyCodeLine{34 \textcolor{keywordtype}{int} \mbox{\hyperlink{parser_8h_a4d4da1271cabf31bc238b8fc3a06023d}{startOfPrimary}}();}
+\DoxyCodeLine{36 \textcolor{keywordtype}{int} \mbox{\hyperlink{parser_8h_a50226f8577f7dc709a2857162f911769}{startOfExpr}}();}
+\DoxyCodeLine{38 \textcolor{keywordtype}{int} \mbox{\hyperlink{parser_8h_ac960ede93a2c7b4f9f285d4e06d5d1dc}{startOfDec}}();}
+\DoxyCodeLine{40 \textcolor{keywordtype}{int} \mbox{\hyperlink{parser_8h_a21ac4f14d84a2152f7db6cad1339aef1}{isCompareOp}}();}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{43 \textcolor{comment}{// function declarations}}
+\DoxyCodeLine{45 \textcolor{comment}{}}
+\DoxyCodeLine{47 \textcolor{keywordtype}{int} \mbox{\hyperlink{parser_8h_a9f1ef5611aceec492693861ea0d7d58e}{lex}}();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{50 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_aaed33fe77209e582d96078370b5f8da4}{program}}();}
+\DoxyCodeLine{52 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a51ebdb798470f0d353084dad34d88aa1}{declaration}}();}
+\DoxyCodeLine{54 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a64d6211f4700397ef5b7b68a3bf7622f}{classDecl}}();}
+\DoxyCodeLine{56 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_abf694a14de39344283aa7edc9797a05f}{funDecl}}();}
+\DoxyCodeLine{58 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a6b62ab74fb50ff9f3d21c2580050b706}{varDecl}}();}
+\DoxyCodeLine{60 \textcolor{comment}{/* Function is not an explicit grammar rule defined by LOX}}
+\DoxyCodeLine{61 \textcolor{comment}{    Instead it is used to make the code/grammar more readable as}}
+\DoxyCodeLine{62 \textcolor{comment}{    The segment is used in different explicit grammar rules}}
+\DoxyCodeLine{63 \textcolor{comment}{*/}}
+\DoxyCodeLine{64 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a51a683fa4fcec142ab1574e00a7b6860}{function}}();}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{67 \textcolor{comment}{// statement declarations}}
+\DoxyCodeLine{69 \textcolor{comment}{}}
+\DoxyCodeLine{71 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a85fe760635f43cff2bae4c91f716dfae}{statement}}();}
+\DoxyCodeLine{73 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a4828163d5883acb1d1e63451f338be10}{exprStmt}}();}
+\DoxyCodeLine{75 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_ab393261e4dc509940d1e5385c94fc829}{forStmt}}();}
+\DoxyCodeLine{77 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a91fd6c29433eb8f47f331e3a73a95fbc}{ifStmt}}();}
+\DoxyCodeLine{79 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a2b886567a729e8999551c6294b373d05}{printStmt}}();}
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_aab855d48d4a257e46cb3db21a011c580}{returnStmt}}();}
+\DoxyCodeLine{83 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a9a042ba127404f044c1a4b5097b2ece0}{whileStmt}}();}
+\DoxyCodeLine{85 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a7e07c2af0cfe7618067f785518e9e64b}{block}}();}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{88 \textcolor{comment}{// Expressions}}
+\DoxyCodeLine{90 \textcolor{comment}{}}
+\DoxyCodeLine{92 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a8a2b150357454169317a7021db6903b6}{expression}}();}
+\DoxyCodeLine{94 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a5e09b923ca5bb65107fe53044fa413e0}{primary}}();}
+\DoxyCodeLine{96 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_aba7af6b502e464074d3c31ff9236a22c}{call}}();}
+\DoxyCodeLine{98 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a77a41c08a4455ff0bb8b90c453f9bcf8}{unary}}();}
+\DoxyCodeLine{100 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a373807cfa51a1b63cfed9dcbe65e551a}{factor}}();}
+\DoxyCodeLine{102 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a6d3ff0af9dd1932c1c031b2c51d88ee0}{term}}();}
+\DoxyCodeLine{104 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a7a0bc57e4bfa4b0478000635db9f6c2b}{comparison}}();}
+\DoxyCodeLine{106 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a678694079f4301a68d5f835553150289}{equality}}();}
+\DoxyCodeLine{108 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_ab7d19e77c693ca61b0d61c07ea019557}{logicAnd}}();}
+\DoxyCodeLine{110 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a098dad83e978e95935fbbea4bc5f4efd}{logicOr}}();}
+\DoxyCodeLine{112 \textcolor{keywordtype}{void} \mbox{\hyperlink{parser_8h_a7519a44d437c202a44d18783f1ab2f1e}{assignment}}();}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\hypertarget{HashSet_8h_source}{}\doxysection{Hash\+Set.\+h}
+\label{HashSet_8h_source}\index{parser/HashSet.h@{parser/HashSet.h}}
+\mbox{\hyperlink{HashSet_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef HASHSET\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define HASHSET\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define INITIAL\_CAPACITY 16}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define LOAD\_FACTOR 0.75}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{13 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structNode}{Node}} \{}
+\DoxyCodeLine{14     \textcolor{keywordtype}{char} *\mbox{\hyperlink{structNode_ad88c9a757bfafd5ff265e0837b150056}{key}}; }
+\DoxyCodeLine{15     \textcolor{keyword}{struct }\mbox{\hyperlink{structNode}{Node}} *\mbox{\hyperlink{structNode_af67b110ca1a258b793bf69d306929b22}{next}}; }
+\DoxyCodeLine{16 \} \mbox{\hyperlink{HashSet_8h_a3b09f37e675bcd48a01bf22155996872}{Node}};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{19 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{20     \mbox{\hyperlink{structNode}{Node}} **\mbox{\hyperlink{structHashSet_acdd2a09b2f90b2642bfed0cf7586549c}{buckets}}; }
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} \mbox{\hyperlink{structHashSet_a6595ff4c9a9997d1b64b7adbf844b16a}{size}};       }
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} \mbox{\hyperlink{structHashSet_aedae5797bff5e9269479df2679347629}{capacity}};   }
+\DoxyCodeLine{23 \} \mbox{\hyperlink{structHashSet}{HashSet}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{28 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{HashSet_8h_a2fa53544d2918e028d920409ac006b33}{hash}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *str);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{32 \mbox{\hyperlink{structHashSet}{HashSet}}* \mbox{\hyperlink{HashSet_8h_a7dfd284cdeba7b134c168b73b61c02f5}{createHashSet}}();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{36 \textcolor{keywordtype}{void} \mbox{\hyperlink{HashSet_8h_a6268094e38dabd33928cce14f9421c13}{resize}}(\mbox{\hyperlink{structHashSet}{HashSet}} *set);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{42 \textcolor{keywordtype}{bool} \mbox{\hyperlink{HashSet_8h_ad84f39b4b1edc5c494be02ad1bb7f1ba}{insert}}(\mbox{\hyperlink{structHashSet}{HashSet}} *set, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{48 \textcolor{keywordtype}{bool} \mbox{\hyperlink{HashSet_8h_ade399faad37180332d5759ad67017574}{contains}}(\mbox{\hyperlink{structHashSet}{HashSet}} *set, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{54 \textcolor{keywordtype}{bool} \mbox{\hyperlink{HashSet_8h_aec8f091df5c0bb0dd9c893b64cff171f}{removeKey}}(\mbox{\hyperlink{structHashSet}{HashSet}} *set, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{58 \textcolor{keywordtype}{void} \mbox{\hyperlink{HashSet_8h_afa2d19a368247416e9fa296a337b5465}{freeHashSet}}(\mbox{\hyperlink{structHashSet}{HashSet}} *set);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

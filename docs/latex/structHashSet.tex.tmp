@@ -1,0 +1,35 @@
+\hypertarget{structHashSet}{}\doxysection{Hash\+Set Struct Reference}
+\label{structHashSet}\index{HashSet@{HashSet}}
+
+
+Data Structure to represent the root of \mbox{\hyperlink{structHashSet}{Hash\+Set}}.  
+
+
+
+
+{\ttfamily \#include $<$Hash\+Set.\+h$>$}
+
+
+
+Collaboration diagram for Hash\+Set\+:
+% FIG 0
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structHashSet_acdd2a09b2f90b2642bfed0cf7586549c}\label{structHashSet_acdd2a09b2f90b2642bfed0cf7586549c}} 
+\mbox{\hyperlink{structNode}{Node}} $\ast$$\ast$ {\bfseries buckets}
+\begin{DoxyCompactList}\small\item\em All of the nodes in the \mbox{\hyperlink{structHashSet}{Hash\+Set}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structHashSet_a6595ff4c9a9997d1b64b7adbf844b16a}\label{structHashSet_a6595ff4c9a9997d1b64b7adbf844b16a}} 
+int {\bfseries size}
+\begin{DoxyCompactList}\small\item\em Number of elements. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structHashSet_aedae5797bff5e9269479df2679347629}\label{structHashSet_aedae5797bff5e9269479df2679347629}} 
+int {\bfseries capacity}
+\begin{DoxyCompactList}\small\item\em Number of buckets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Data Structure to represent the root of \mbox{\hyperlink{structHashSet}{Hash\+Set}}. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parser/Hash\+Set.\+h\end{DoxyCompactItemize}

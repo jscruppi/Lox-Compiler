@@ -1,0 +1,72 @@
+\hypertarget{lexer_8h_source}{}\doxysection{lexer.\+h}
+\label{lexer_8h_source}\index{lexer/lexer.h@{lexer/lexer.h}}
+\mbox{\hyperlink{lexer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    Define all the tokens and their associated values}}
+\DoxyCodeLine{3 \textcolor{comment}{    To be used in the Lox compiler project}}
+\DoxyCodeLine{4 \textcolor{comment}{}}
+\DoxyCodeLine{5 \textcolor{comment}{    Author: Joe Scruppi}}
+\DoxyCodeLine{6 \textcolor{comment}{}}
+\DoxyCodeLine{7 \textcolor{comment}{*/}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef LEXER\_H}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define LEXER\_H}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{comment}{//keywords}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define TOK\_CLASS       1001}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define TOK\_ELSE        1002}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define TOK\_FALSE       1003}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define TOK\_FOR         1004}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define TOK\_FUN         1005}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define TOK\_IF          1006}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define TOK\_NIL         1007}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define TOK\_OR          1008}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define TOK\_PRINT       1009}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define TOK\_RETURN      1010}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define TOK\_SUPER       1011}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define TOK\_THIS        1012}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define TOK\_TRUE        1013}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define TOK\_VAR         1014}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define TOK\_WHILE       1015}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{//puncuation}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define TOK\_OPENPAREN   2000}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define TOK\_CLOSEPAREN  2001}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define TOK\_OPENBRACE   2002}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define TOK\_CLOSEBRACE  2003}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define TOK\_SEMICOLON   2004}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define TOK\_COMMA       2005}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define TOK\_DOT         2006}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define TOK\_OPENBRACK   2007}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define TOK\_CLOSEBRACK  2008}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define TOK\_COLON       2009}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{//operators}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define TOK\_PLUS        3000}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define TOK\_MINUS       3001}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define TOK\_MULT        3002}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define TOK\_DIV         3003}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define TOK\_ASSIGN      3004}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define TOK\_EQUAL       3005}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define TOK\_NOTEQUAL    3006}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define TOK\_LESS        3007}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define TOK\_GREATER     3008}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define TOK\_LESSEQUAL   3009}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define TOK\_GREATEQUAL  3010}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define TOK\_NOT         3011}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define TOK\_AND         3012}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define TOK\_OR          3013}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{comment}{//abstractions}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define TOK\_STRING      4000}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define TOK\_INT         4001}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define TOK\_FLOAT       4002}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define TOK\_IDENT       4003}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define TOK\_EOF         4004}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define TOK\_UNKNOWN     4005}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define TOK\_INVALIDLIT  4006}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

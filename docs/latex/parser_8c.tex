@@ -1,0 +1,453 @@
+\hypertarget{parser_8c}{}\doxysection{parser/parser.c File Reference}
+\label{parser_8c}\index{parser/parser.c@{parser/parser.c}}
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lexer/lexer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}errors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+Include dependency graph for parser.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{parser_8c_a678e3a09580d2b82c994856227fee469}{psp}} ()
+\begin{DoxyCompactList}\small\item\em Used for debugging -\/ sets indent based on level(depth) of call. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_aa64897aae26deb88d2d536edd7691056}{output}} (char $\ast$what)
+\begin{DoxyCompactList}\small\item\em Used for debugging -\/ outputs what we should expect to parse and compares to what is actually parsed. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a483e77010c5c206a95a7ca586de449db}{start\+Of\+Statement}} ()
+\begin{DoxyCompactList}\small\item\em Returns if lexeme begins a statement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a50226f8577f7dc709a2857162f911769}{start\+Of\+Expr}} ()
+\begin{DoxyCompactList}\small\item\em Returns if lexeme begins a expression. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a4d4da1271cabf31bc238b8fc3a06023d}{start\+Of\+Primary}} ()
+\begin{DoxyCompactList}\small\item\em Returns if lexeme begins a primary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_ac960ede93a2c7b4f9f285d4e06d5d1dc}{start\+Of\+Dec}} ()
+\begin{DoxyCompactList}\small\item\em Returns if lexeme begins a declaration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a21ac4f14d84a2152f7db6cad1339aef1}{is\+Compare\+Op}} ()
+\begin{DoxyCompactList}\small\item\em Returns if lexeme is a comparator operator. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a9f1ef5611aceec492693861ea0d7d58e}{lex}} ()
+\begin{DoxyCompactList}\small\item\em Advances the lexer by 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_aaed33fe77209e582d96078370b5f8da4}{program}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}program\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a51ebdb798470f0d353084dad34d88aa1}{declaration}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}declaration\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a64d6211f4700397ef5b7b68a3bf7622f}{class\+Decl}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}class\+\_\+decl\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_abf694a14de39344283aa7edc9797a05f}{fun\+Decl}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}fun\+\_\+decl\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a51a683fa4fcec142ab1574e00a7b6860}{function}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}function\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a6b62ab74fb50ff9f3d21c2580050b706}{var\+Decl}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}var\+\_\+decl\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a85fe760635f43cff2bae4c91f716dfae}{statement}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}statement\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a91fd6c29433eb8f47f331e3a73a95fbc}{if\+Stmt}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}if\+\_\+stmt\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a2b886567a729e8999551c6294b373d05}{print\+Stmt}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}print\+\_\+stmt\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_aab855d48d4a257e46cb3db21a011c580}{return\+Stmt}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}return\+\_\+stmt\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a9a042ba127404f044c1a4b5097b2ece0}{while\+Stmt}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}while\+\_\+stmt\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a7e07c2af0cfe7618067f785518e9e64b}{block}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}block\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a4828163d5883acb1d1e63451f338be10}{expr\+Stmt}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}expr\+\_\+stmt\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_ab393261e4dc509940d1e5385c94fc829}{for\+Stmt}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}for\+\_\+stmt\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a8a2b150357454169317a7021db6903b6}{expression}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}expression\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a7519a44d437c202a44d18783f1ab2f1e}{assignment}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}assignment\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a098dad83e978e95935fbbea4bc5f4efd}{logic\+Or}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}logic\+\_\+or\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_ab7d19e77c693ca61b0d61c07ea019557}{logic\+And}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}logic\+\_\+and\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a678694079f4301a68d5f835553150289}{equality}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}equality\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a7a0bc57e4bfa4b0478000635db9f6c2b}{comparison}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}comparison\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a6d3ff0af9dd1932c1c031b2c51d88ee0}{term}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}term\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a373807cfa51a1b63cfed9dcbe65e551a}{factor}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}factor\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a77a41c08a4455ff0bb8b90c453f9bcf8}{unary}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}unary\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_aba7af6b502e464074d3c31ff9236a22c}{call}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}call\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8c_a5e09b923ca5bb65107fe53044fa413e0}{primary}} ()
+\begin{DoxyCompactList}\small\item\em Parses the rule \textquotesingle{}primary\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{parser_8c_ac8fdbf58f8a9e729296082358dc8c874}{next\+Token}} = 0
+\begin{DoxyCompactList}\small\item\em Lists that stores users\textquotesingle{} created identifiers. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{parser_8c_a5145b8086781e2921dcfc6537136838a}{id\+Name}}
+\item 
+char $\ast$ \mbox{\hyperlink{parser_8c_a5a9cab123ab17cf7abbbfa3854b07467}{id\+Type}}
+\item 
+\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$ \mbox{\hyperlink{parser_8c_a6ed601495db25bb39a713c96077e80d5}{symbol\+Table}} = NULL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parser_8c_a7519a44d437c202a44d18783f1ab2f1e}\label{parser_8c_a7519a44d437c202a44d18783f1ab2f1e}} 
+\index{parser.c@{parser.c}!assignment@{assignment}}
+\index{assignment@{assignment}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{assignment()}{assignment()}}
+{\footnotesize\ttfamily void assignment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}assignment\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a7e07c2af0cfe7618067f785518e9e64b}\label{parser_8c_a7e07c2af0cfe7618067f785518e9e64b}} 
+\index{parser.c@{parser.c}!block@{block}}
+\index{block@{block}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{block()}{block()}}
+{\footnotesize\ttfamily void block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}block\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_aba7af6b502e464074d3c31ff9236a22c}\label{parser_8c_aba7af6b502e464074d3c31ff9236a22c}} 
+\index{parser.c@{parser.c}!call@{call}}
+\index{call@{call}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily void call (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}call\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a64d6211f4700397ef5b7b68a3bf7622f}\label{parser_8c_a64d6211f4700397ef5b7b68a3bf7622f}} 
+\index{parser.c@{parser.c}!classDecl@{classDecl}}
+\index{classDecl@{classDecl}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{classDecl()}{classDecl()}}
+{\footnotesize\ttfamily void class\+Decl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}class\+\_\+decl\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a7a0bc57e4bfa4b0478000635db9f6c2b}\label{parser_8c_a7a0bc57e4bfa4b0478000635db9f6c2b}} 
+\index{parser.c@{parser.c}!comparison@{comparison}}
+\index{comparison@{comparison}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{comparison()}{comparison()}}
+{\footnotesize\ttfamily void comparison (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}comparison\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a51ebdb798470f0d353084dad34d88aa1}\label{parser_8c_a51ebdb798470f0d353084dad34d88aa1}} 
+\index{parser.c@{parser.c}!declaration@{declaration}}
+\index{declaration@{declaration}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{declaration()}{declaration()}}
+{\footnotesize\ttfamily void declaration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}declaration\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a678694079f4301a68d5f835553150289}\label{parser_8c_a678694079f4301a68d5f835553150289}} 
+\index{parser.c@{parser.c}!equality@{equality}}
+\index{equality@{equality}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{equality()}{equality()}}
+{\footnotesize\ttfamily void equality (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}equality\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a8a2b150357454169317a7021db6903b6}\label{parser_8c_a8a2b150357454169317a7021db6903b6}} 
+\index{parser.c@{parser.c}!expression@{expression}}
+\index{expression@{expression}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{expression()}{expression()}}
+{\footnotesize\ttfamily void expression (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}expression\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a4828163d5883acb1d1e63451f338be10}\label{parser_8c_a4828163d5883acb1d1e63451f338be10}} 
+\index{parser.c@{parser.c}!exprStmt@{exprStmt}}
+\index{exprStmt@{exprStmt}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{exprStmt()}{exprStmt()}}
+{\footnotesize\ttfamily void expr\+Stmt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}expr\+\_\+stmt\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a373807cfa51a1b63cfed9dcbe65e551a}\label{parser_8c_a373807cfa51a1b63cfed9dcbe65e551a}} 
+\index{parser.c@{parser.c}!factor@{factor}}
+\index{factor@{factor}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{factor()}{factor()}}
+{\footnotesize\ttfamily void factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}factor\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_ab393261e4dc509940d1e5385c94fc829}\label{parser_8c_ab393261e4dc509940d1e5385c94fc829}} 
+\index{parser.c@{parser.c}!forStmt@{forStmt}}
+\index{forStmt@{forStmt}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{forStmt()}{forStmt()}}
+{\footnotesize\ttfamily void for\+Stmt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}for\+\_\+stmt\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a51a683fa4fcec142ab1574e00a7b6860}\label{parser_8c_a51a683fa4fcec142ab1574e00a7b6860}} 
+\index{parser.c@{parser.c}!function@{function}}
+\index{function@{function}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{function()}{function()}}
+{\footnotesize\ttfamily void function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}function\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_abf694a14de39344283aa7edc9797a05f}\label{parser_8c_abf694a14de39344283aa7edc9797a05f}} 
+\index{parser.c@{parser.c}!funDecl@{funDecl}}
+\index{funDecl@{funDecl}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{funDecl()}{funDecl()}}
+{\footnotesize\ttfamily void fun\+Decl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}fun\+\_\+decl\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a91fd6c29433eb8f47f331e3a73a95fbc}\label{parser_8c_a91fd6c29433eb8f47f331e3a73a95fbc}} 
+\index{parser.c@{parser.c}!ifStmt@{ifStmt}}
+\index{ifStmt@{ifStmt}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{ifStmt()}{ifStmt()}}
+{\footnotesize\ttfamily void if\+Stmt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}if\+\_\+stmt\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a21ac4f14d84a2152f7db6cad1339aef1}\label{parser_8c_a21ac4f14d84a2152f7db6cad1339aef1}} 
+\index{parser.c@{parser.c}!isCompareOp@{isCompareOp}}
+\index{isCompareOp@{isCompareOp}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{isCompareOp()}{isCompareOp()}}
+{\footnotesize\ttfamily int is\+Compare\+Op (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns if lexeme is a comparator operator. 
+
+\mbox{\Hypertarget{parser_8c_a9f1ef5611aceec492693861ea0d7d58e}\label{parser_8c_a9f1ef5611aceec492693861ea0d7d58e}} 
+\index{parser.c@{parser.c}!lex@{lex}}
+\index{lex@{lex}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{lex()}{lex()}}
+{\footnotesize\ttfamily int lex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Advances the lexer by 1. 
+
+\mbox{\Hypertarget{parser_8c_ab7d19e77c693ca61b0d61c07ea019557}\label{parser_8c_ab7d19e77c693ca61b0d61c07ea019557}} 
+\index{parser.c@{parser.c}!logicAnd@{logicAnd}}
+\index{logicAnd@{logicAnd}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{logicAnd()}{logicAnd()}}
+{\footnotesize\ttfamily void logic\+And (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}logic\+\_\+and\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a098dad83e978e95935fbbea4bc5f4efd}\label{parser_8c_a098dad83e978e95935fbbea4bc5f4efd}} 
+\index{parser.c@{parser.c}!logicOr@{logicOr}}
+\index{logicOr@{logicOr}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{logicOr()}{logicOr()}}
+{\footnotesize\ttfamily void logic\+Or (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}logic\+\_\+or\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_aa64897aae26deb88d2d536edd7691056}\label{parser_8c_aa64897aae26deb88d2d536edd7691056}} 
+\index{parser.c@{parser.c}!output@{output}}
+\index{output@{output}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily void output (\begin{DoxyParamCaption}\item[{char $\ast$}]{what }\end{DoxyParamCaption})}
+
+
+
+Used for debugging -\/ outputs what we should expect to parse and compares to what is actually parsed. 
+
+\mbox{\Hypertarget{parser_8c_a5e09b923ca5bb65107fe53044fa413e0}\label{parser_8c_a5e09b923ca5bb65107fe53044fa413e0}} 
+\index{parser.c@{parser.c}!primary@{primary}}
+\index{primary@{primary}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{primary()}{primary()}}
+{\footnotesize\ttfamily void primary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}primary\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a2b886567a729e8999551c6294b373d05}\label{parser_8c_a2b886567a729e8999551c6294b373d05}} 
+\index{parser.c@{parser.c}!printStmt@{printStmt}}
+\index{printStmt@{printStmt}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{printStmt()}{printStmt()}}
+{\footnotesize\ttfamily void print\+Stmt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}print\+\_\+stmt\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_aaed33fe77209e582d96078370b5f8da4}\label{parser_8c_aaed33fe77209e582d96078370b5f8da4}} 
+\index{parser.c@{parser.c}!program@{program}}
+\index{program@{program}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{program()}{program()}}
+{\footnotesize\ttfamily void program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}program\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a678e3a09580d2b82c994856227fee469}\label{parser_8c_a678e3a09580d2b82c994856227fee469}} 
+\index{parser.c@{parser.c}!psp@{psp}}
+\index{psp@{psp}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{psp()}{psp()}}
+{\footnotesize\ttfamily void psp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used for debugging -\/ sets indent based on level(depth) of call. 
+
+\mbox{\Hypertarget{parser_8c_aab855d48d4a257e46cb3db21a011c580}\label{parser_8c_aab855d48d4a257e46cb3db21a011c580}} 
+\index{parser.c@{parser.c}!returnStmt@{returnStmt}}
+\index{returnStmt@{returnStmt}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{returnStmt()}{returnStmt()}}
+{\footnotesize\ttfamily void return\+Stmt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}return\+\_\+stmt\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_ac960ede93a2c7b4f9f285d4e06d5d1dc}\label{parser_8c_ac960ede93a2c7b4f9f285d4e06d5d1dc}} 
+\index{parser.c@{parser.c}!startOfDec@{startOfDec}}
+\index{startOfDec@{startOfDec}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{startOfDec()}{startOfDec()}}
+{\footnotesize\ttfamily int start\+Of\+Dec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns if lexeme begins a declaration. 
+
+\mbox{\Hypertarget{parser_8c_a50226f8577f7dc709a2857162f911769}\label{parser_8c_a50226f8577f7dc709a2857162f911769}} 
+\index{parser.c@{parser.c}!startOfExpr@{startOfExpr}}
+\index{startOfExpr@{startOfExpr}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{startOfExpr()}{startOfExpr()}}
+{\footnotesize\ttfamily int start\+Of\+Expr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns if lexeme begins a expression. 
+
+\mbox{\Hypertarget{parser_8c_a4d4da1271cabf31bc238b8fc3a06023d}\label{parser_8c_a4d4da1271cabf31bc238b8fc3a06023d}} 
+\index{parser.c@{parser.c}!startOfPrimary@{startOfPrimary}}
+\index{startOfPrimary@{startOfPrimary}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{startOfPrimary()}{startOfPrimary()}}
+{\footnotesize\ttfamily int start\+Of\+Primary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns if lexeme begins a primary. 
+
+\mbox{\Hypertarget{parser_8c_a483e77010c5c206a95a7ca586de449db}\label{parser_8c_a483e77010c5c206a95a7ca586de449db}} 
+\index{parser.c@{parser.c}!startOfStatement@{startOfStatement}}
+\index{startOfStatement@{startOfStatement}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{startOfStatement()}{startOfStatement()}}
+{\footnotesize\ttfamily int start\+Of\+Statement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns if lexeme begins a statement. 
+
+\mbox{\Hypertarget{parser_8c_a85fe760635f43cff2bae4c91f716dfae}\label{parser_8c_a85fe760635f43cff2bae4c91f716dfae}} 
+\index{parser.c@{parser.c}!statement@{statement}}
+\index{statement@{statement}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{statement()}{statement()}}
+{\footnotesize\ttfamily void statement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}statement\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a6d3ff0af9dd1932c1c031b2c51d88ee0}\label{parser_8c_a6d3ff0af9dd1932c1c031b2c51d88ee0}} 
+\index{parser.c@{parser.c}!term@{term}}
+\index{term@{term}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{term()}{term()}}
+{\footnotesize\ttfamily void term (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}term\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a77a41c08a4455ff0bb8b90c453f9bcf8}\label{parser_8c_a77a41c08a4455ff0bb8b90c453f9bcf8}} 
+\index{parser.c@{parser.c}!unary@{unary}}
+\index{unary@{unary}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{unary()}{unary()}}
+{\footnotesize\ttfamily void unary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}unary\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a6b62ab74fb50ff9f3d21c2580050b706}\label{parser_8c_a6b62ab74fb50ff9f3d21c2580050b706}} 
+\index{parser.c@{parser.c}!varDecl@{varDecl}}
+\index{varDecl@{varDecl}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{varDecl()}{varDecl()}}
+{\footnotesize\ttfamily void var\+Decl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}var\+\_\+decl\textquotesingle{}. 
+
+\mbox{\Hypertarget{parser_8c_a9a042ba127404f044c1a4b5097b2ece0}\label{parser_8c_a9a042ba127404f044c1a4b5097b2ece0}} 
+\index{parser.c@{parser.c}!whileStmt@{whileStmt}}
+\index{whileStmt@{whileStmt}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{whileStmt()}{whileStmt()}}
+{\footnotesize\ttfamily void while\+Stmt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the rule \textquotesingle{}while\+\_\+stmt\textquotesingle{}. 
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{parser_8c_a5145b8086781e2921dcfc6537136838a}\label{parser_8c_a5145b8086781e2921dcfc6537136838a}} 
+\index{parser.c@{parser.c}!idName@{idName}}
+\index{idName@{idName}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{idName}{idName}}
+{\footnotesize\ttfamily char$\ast$ id\+Name}
+
+\mbox{\Hypertarget{parser_8c_a5a9cab123ab17cf7abbbfa3854b07467}\label{parser_8c_a5a9cab123ab17cf7abbbfa3854b07467}} 
+\index{parser.c@{parser.c}!idType@{idType}}
+\index{idType@{idType}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{idType}{idType}}
+{\footnotesize\ttfamily char$\ast$ id\+Type}
+
+\mbox{\Hypertarget{parser_8c_ac8fdbf58f8a9e729296082358dc8c874}\label{parser_8c_ac8fdbf58f8a9e729296082358dc8c874}} 
+\index{parser.c@{parser.c}!nextToken@{nextToken}}
+\index{nextToken@{nextToken}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{nextToken}{nextToken}}
+{\footnotesize\ttfamily int next\+Token = 0}
+
+
+
+Lists that stores users\textquotesingle{} created identifiers. 
+
+\mbox{\Hypertarget{parser_8c_a6ed601495db25bb39a713c96077e80d5}\label{parser_8c_a6ed601495db25bb39a713c96077e80d5}} 
+\index{parser.c@{parser.c}!symbolTable@{symbolTable}}
+\index{symbolTable@{symbolTable}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{symbolTable}{symbolTable}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structHashSet}{Hash\+Set}}$\ast$ symbol\+Table = NULL}
+

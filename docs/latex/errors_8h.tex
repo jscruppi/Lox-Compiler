@@ -1,0 +1,196 @@
+\hypertarget{errors_8h}{}\doxysection{parser/errors.h File Reference}
+\label{errors_8h}\index{parser/errors.h@{parser/errors.h}}
+{\ttfamily \#include \char`\"{}Hash\+Set.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lexer/lexer.\+h\char`\"{}}\newline
+Include dependency graph for errors.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{errors_8h_a9df924e1a7db9899ccbfa3cf4863983c}{check\+Error100}} ()
+\begin{DoxyCompactList}\small\item\em Checks if current var has been declared. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_ad25dd3d965684b862f1bcb4d66be0589}{check\+Error101}} ()
+\begin{DoxyCompactList}\small\item\em Checks if current class types has been declared. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_a7fd49d59a8b2dfeeb7489a1afe7050e1}{check\+Error102}} ()
+\begin{DoxyCompactList}\small\item\em Checks if var decl is trying to reuse an identifier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_ae00a0f641f68e4e7b8f0a1f74ab44fe5}{check\+Error110}} ()
+\begin{DoxyCompactList}\small\item\em Checks for valid literal (string, int, float) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_a3f552a0e817d0a11483c14d1cbbe3387}{check\+Error200}} ()
+\begin{DoxyCompactList}\small\item\em Checks for expected semicolon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_a9151cbc7f0c57f33570e03ecf05c6379}{check\+Error201}} ()
+\begin{DoxyCompactList}\small\item\em Checks for expected curly brace (open + close) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_a733048c658164b4b7084f0309c190fdb}{check\+Error202}} ()
+\begin{DoxyCompactList}\small\item\em Checks for expected parenthesis (open + close) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_afb8cdaa5ee84c4377735fbd1a40a2172}{check\+Error203}} ()
+\begin{DoxyCompactList}\small\item\em Checks for expected operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_ac8a39077e7ef766a6ab26d4f51abced8}{check\+Error204}} ()
+\begin{DoxyCompactList}\small\item\em Checks for expected logic operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_a14fdfdff6790e49c0fa1869511f822ce}{check\+Error205}} ()
+\begin{DoxyCompactList}\small\item\em Checks for expected comma. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_a69e721fad21359360def5e91c144a0f8}{check\+Error909}} ()
+\begin{DoxyCompactList}\small\item\em \textquotesingle{}Kitchen Sink\textquotesingle{} error -\/ used when current error cannot be described by any other error check \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors_8h_ae149cf711c9fef7ac37376e62fc3dae0}{throw\+Message}} (const char $\ast$message)
+\begin{DoxyCompactList}\small\item\em Used to display error message to stdout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{errors_8h_ad9264b77d56b6971f29739e2bda77f51}{yytext}}
+\item 
+int \mbox{\hyperlink{errors_8h_a5e36364965360da7b7cdfc2188e0af84}{yylineno}}
+\item 
+\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$ \mbox{\hyperlink{errors_8h_a6ed601495db25bb39a713c96077e80d5}{symbol\+Table}}
+\item 
+int \mbox{\hyperlink{errors_8h_ac8fdbf58f8a9e729296082358dc8c874}{next\+Token}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{errors_8h_a9df924e1a7db9899ccbfa3cf4863983c}\label{errors_8h_a9df924e1a7db9899ccbfa3cf4863983c}} 
+\index{errors.h@{errors.h}!checkError100@{checkError100}}
+\index{checkError100@{checkError100}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError100()}{checkError100()}}
+{\footnotesize\ttfamily void check\+Error100 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if current var has been declared. 
+
+\mbox{\Hypertarget{errors_8h_ad25dd3d965684b862f1bcb4d66be0589}\label{errors_8h_ad25dd3d965684b862f1bcb4d66be0589}} 
+\index{errors.h@{errors.h}!checkError101@{checkError101}}
+\index{checkError101@{checkError101}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError101()}{checkError101()}}
+{\footnotesize\ttfamily void check\+Error101 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if current class types has been declared. 
+
+\mbox{\Hypertarget{errors_8h_a7fd49d59a8b2dfeeb7489a1afe7050e1}\label{errors_8h_a7fd49d59a8b2dfeeb7489a1afe7050e1}} 
+\index{errors.h@{errors.h}!checkError102@{checkError102}}
+\index{checkError102@{checkError102}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError102()}{checkError102()}}
+{\footnotesize\ttfamily void check\+Error102 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if var decl is trying to reuse an identifier. 
+
+\mbox{\Hypertarget{errors_8h_ae00a0f641f68e4e7b8f0a1f74ab44fe5}\label{errors_8h_ae00a0f641f68e4e7b8f0a1f74ab44fe5}} 
+\index{errors.h@{errors.h}!checkError110@{checkError110}}
+\index{checkError110@{checkError110}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError110()}{checkError110()}}
+{\footnotesize\ttfamily void check\+Error110 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for valid literal (string, int, float) 
+
+\mbox{\Hypertarget{errors_8h_a3f552a0e817d0a11483c14d1cbbe3387}\label{errors_8h_a3f552a0e817d0a11483c14d1cbbe3387}} 
+\index{errors.h@{errors.h}!checkError200@{checkError200}}
+\index{checkError200@{checkError200}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError200()}{checkError200()}}
+{\footnotesize\ttfamily void check\+Error200 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for expected semicolon. 
+
+\mbox{\Hypertarget{errors_8h_a9151cbc7f0c57f33570e03ecf05c6379}\label{errors_8h_a9151cbc7f0c57f33570e03ecf05c6379}} 
+\index{errors.h@{errors.h}!checkError201@{checkError201}}
+\index{checkError201@{checkError201}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError201()}{checkError201()}}
+{\footnotesize\ttfamily void check\+Error201 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for expected curly brace (open + close) 
+
+\mbox{\Hypertarget{errors_8h_a733048c658164b4b7084f0309c190fdb}\label{errors_8h_a733048c658164b4b7084f0309c190fdb}} 
+\index{errors.h@{errors.h}!checkError202@{checkError202}}
+\index{checkError202@{checkError202}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError202()}{checkError202()}}
+{\footnotesize\ttfamily void check\+Error202 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for expected parenthesis (open + close) 
+
+\mbox{\Hypertarget{errors_8h_afb8cdaa5ee84c4377735fbd1a40a2172}\label{errors_8h_afb8cdaa5ee84c4377735fbd1a40a2172}} 
+\index{errors.h@{errors.h}!checkError203@{checkError203}}
+\index{checkError203@{checkError203}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError203()}{checkError203()}}
+{\footnotesize\ttfamily void check\+Error203 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for expected operator. 
+
+\mbox{\Hypertarget{errors_8h_ac8a39077e7ef766a6ab26d4f51abced8}\label{errors_8h_ac8a39077e7ef766a6ab26d4f51abced8}} 
+\index{errors.h@{errors.h}!checkError204@{checkError204}}
+\index{checkError204@{checkError204}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError204()}{checkError204()}}
+{\footnotesize\ttfamily void check\+Error204 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for expected logic operator. 
+
+\mbox{\Hypertarget{errors_8h_a14fdfdff6790e49c0fa1869511f822ce}\label{errors_8h_a14fdfdff6790e49c0fa1869511f822ce}} 
+\index{errors.h@{errors.h}!checkError205@{checkError205}}
+\index{checkError205@{checkError205}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError205()}{checkError205()}}
+{\footnotesize\ttfamily void check\+Error205 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for expected comma. 
+
+\mbox{\Hypertarget{errors_8h_a69e721fad21359360def5e91c144a0f8}\label{errors_8h_a69e721fad21359360def5e91c144a0f8}} 
+\index{errors.h@{errors.h}!checkError909@{checkError909}}
+\index{checkError909@{checkError909}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{checkError909()}{checkError909()}}
+{\footnotesize\ttfamily void check\+Error909 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\textquotesingle{}Kitchen Sink\textquotesingle{} error -\/ used when current error cannot be described by any other error check 
+
+\mbox{\Hypertarget{errors_8h_ae149cf711c9fef7ac37376e62fc3dae0}\label{errors_8h_ae149cf711c9fef7ac37376e62fc3dae0}} 
+\index{errors.h@{errors.h}!throwMessage@{throwMessage}}
+\index{throwMessage@{throwMessage}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{throwMessage()}{throwMessage()}}
+{\footnotesize\ttfamily void throw\+Message (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Used to display error message to stdout. 
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{errors_8h_ac8fdbf58f8a9e729296082358dc8c874}\label{errors_8h_ac8fdbf58f8a9e729296082358dc8c874}} 
+\index{errors.h@{errors.h}!nextToken@{nextToken}}
+\index{nextToken@{nextToken}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{nextToken}{nextToken}}
+{\footnotesize\ttfamily int next\+Token\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{errors_8h_a6ed601495db25bb39a713c96077e80d5}\label{errors_8h_a6ed601495db25bb39a713c96077e80d5}} 
+\index{errors.h@{errors.h}!symbolTable@{symbolTable}}
+\index{symbolTable@{symbolTable}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{symbolTable}{symbolTable}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structHashSet}{Hash\+Set}}$\ast$ symbol\+Table\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{errors_8h_a5e36364965360da7b7cdfc2188e0af84}\label{errors_8h_a5e36364965360da7b7cdfc2188e0af84}} 
+\index{errors.h@{errors.h}!yylineno@{yylineno}}
+\index{yylineno@{yylineno}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{yylineno}{yylineno}}
+{\footnotesize\ttfamily int yylineno\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{errors_8h_ad9264b77d56b6971f29739e2bda77f51}\label{errors_8h_ad9264b77d56b6971f29739e2bda77f51}} 
+\index{errors.h@{errors.h}!yytext@{yytext}}
+\index{yytext@{yytext}!errors.h@{errors.h}}
+\doxysubsubsection{\texorpdfstring{yytext}{yytext}}
+{\footnotesize\ttfamily char$\ast$ yytext\hspace{0.3cm}{\ttfamily [extern]}}
+

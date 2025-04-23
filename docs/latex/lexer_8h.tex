@@ -1,0 +1,378 @@
+\hypertarget{lexer_8h}{}\doxysection{lexer/lexer.h File Reference}
+\label{lexer_8h}\index{lexer/lexer.h@{lexer/lexer.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ae3703f7999da4f1de951ce5430196d6e}{TOK\+\_\+\+CLASS}}~1001
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a9f6f3e8c704f066e2d81e983f70d4ee4}{TOK\+\_\+\+ELSE}}~1002
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a4291799ae3dc8ce8cd392528fc6fb23a}{TOK\+\_\+\+FALSE}}~1003
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a1de3eab4996d9ee50902d78a67df85e2}{TOK\+\_\+\+FOR}}~1004
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a8ac3b78f1ab805646b6e1cb2a7d65cd7}{TOK\+\_\+\+FUN}}~1005
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ab0d109cc3e36f227a132c83b7dfc48b0}{TOK\+\_\+\+IF}}~1006
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a43b1409b1a16cc6744bc778fb7807d32}{TOK\+\_\+\+NIL}}~1007
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a8064ab10fd617cc4f21f43de6bdefa7c}{TOK\+\_\+\+OR}}~1008
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a179835aeb3d0b90803c25cb89cbe5c8d}{TOK\+\_\+\+PRINT}}~1009
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a954c1481c04f241a5100c471e114ebce}{TOK\+\_\+\+RETURN}}~1010
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a45c9b41e536b95869f4f2d51efee44bc}{TOK\+\_\+\+SUPER}}~1011
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a4d2832cb668a76d058c60d9b55f408d3}{TOK\+\_\+\+THIS}}~1012
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a041d9da05e8f77c6de9303ce416ba2b6}{TOK\+\_\+\+TRUE}}~1013
+\item 
+\#define \mbox{\hyperlink{lexer_8h_aec6fbb7100afcb455b2f17f11f1f3594}{TOK\+\_\+\+VAR}}~1014
+\item 
+\#define \mbox{\hyperlink{lexer_8h_adb5fedc0036eb450578443718f89edef}{TOK\+\_\+\+WHILE}}~1015
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a32cb7376070c044d5df3d1c80bf3e245}{TOK\+\_\+\+OPENPAREN}}~2000
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ac54a537f5c686a95a3c9c78fe8cb3378}{TOK\+\_\+\+CLOSEPAREN}}~2001
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a6f6a42f8198000618ce044924432fd39}{TOK\+\_\+\+OPENBRACE}}~2002
+\item 
+\#define \mbox{\hyperlink{lexer_8h_afd9e2886322b113a8aeea96d1c39c0e3}{TOK\+\_\+\+CLOSEBRACE}}~2003
+\item 
+\#define \mbox{\hyperlink{lexer_8h_aeed3603d6bcfa2873994098d2bffe4be}{TOK\+\_\+\+SEMICOLON}}~2004
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ae83b5d27d87a650e964b21698da02fda}{TOK\+\_\+\+COMMA}}~2005
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ae0483d6ecf2d837783995a2ebf3b7ea7}{TOK\+\_\+\+DOT}}~2006
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a46a05bea777429022c58da9bf5bd2c58}{TOK\+\_\+\+OPENBRACK}}~2007
+\item 
+\#define \mbox{\hyperlink{lexer_8h_abc87063649e5a25c7e457481b1e108b9}{TOK\+\_\+\+CLOSEBRACK}}~2008
+\item 
+\#define \mbox{\hyperlink{lexer_8h_adf2c1bd40491696ea984450f55e477e9}{TOK\+\_\+\+COLON}}~2009
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a4fd81c08ba9c673cec1309d6df79d970}{TOK\+\_\+\+PLUS}}~3000
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ab07ad6d40e03393c18199cec582fda49}{TOK\+\_\+\+MINUS}}~3001
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a10c53a9029a59de820ba425afe145e3f}{TOK\+\_\+\+MULT}}~3002
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a1ada1bb69477c5c2eeb9ae44998b682c}{TOK\+\_\+\+DIV}}~3003
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a01ea0b41a0cb3d89d3c1a3dee13655f3}{TOK\+\_\+\+ASSIGN}}~3004
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a5b4f369fb03faf87d9587e66a49b9492}{TOK\+\_\+\+EQUAL}}~3005
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a6da06325d5396a3e04d27a5214f89530}{TOK\+\_\+\+NOTEQUAL}}~3006
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a273777a39537940c55a6851bcc421591}{TOK\+\_\+\+LESS}}~3007
+\item 
+\#define \mbox{\hyperlink{lexer_8h_affdd47733cd935d380c9c4c7e7964268}{TOK\+\_\+\+GREATER}}~3008
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a32c14b0cb82e4a86e80e93b80df955aa}{TOK\+\_\+\+LESSEQUAL}}~3009
+\item 
+\#define \mbox{\hyperlink{lexer_8h_af4b7d5b259e8b7b0b5cf1e14dd3f6be7}{TOK\+\_\+\+GREATEQUAL}}~3010
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a55a2a2dbeca6900f02410d5d601d41ee}{TOK\+\_\+\+NOT}}~3011
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a5b8a11f9c7cf618abf1718ce87f7ccb2}{TOK\+\_\+\+AND}}~3012
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a8064ab10fd617cc4f21f43de6bdefa7c}{TOK\+\_\+\+OR}}~3013
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a438ebcf2bfac5fd8af5356f3c0305839}{TOK\+\_\+\+STRING}}~4000
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a8c737829d180bcd6ccf72784a8554076}{TOK\+\_\+\+INT}}~4001
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a3867e462c2d373a53251ca0b835aada5}{TOK\+\_\+\+FLOAT}}~4002
+\item 
+\#define \mbox{\hyperlink{lexer_8h_a70d47ff670c89da199e7486621b64499}{TOK\+\_\+\+IDENT}}~4003
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ac131d6cae18195f7c314dafa7c00393d}{TOK\+\_\+\+EOF}}~4004
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ac6cac6c403755bb4cee90be276e1cb83}{TOK\+\_\+\+UNKNOWN}}~4005
+\item 
+\#define \mbox{\hyperlink{lexer_8h_ad85c15745f06f05d95be191cae5506c0}{TOK\+\_\+\+INVALIDLIT}}~4006
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{lexer_8h_a5b8a11f9c7cf618abf1718ce87f7ccb2}\label{lexer_8h_a5b8a11f9c7cf618abf1718ce87f7ccb2}} 
+\index{lexer.h@{lexer.h}!TOK\_AND@{TOK\_AND}}
+\index{TOK\_AND@{TOK\_AND}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_AND}{TOK\_AND}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+AND~3012}
+
+\mbox{\Hypertarget{lexer_8h_a01ea0b41a0cb3d89d3c1a3dee13655f3}\label{lexer_8h_a01ea0b41a0cb3d89d3c1a3dee13655f3}} 
+\index{lexer.h@{lexer.h}!TOK\_ASSIGN@{TOK\_ASSIGN}}
+\index{TOK\_ASSIGN@{TOK\_ASSIGN}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_ASSIGN}{TOK\_ASSIGN}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+ASSIGN~3004}
+
+\mbox{\Hypertarget{lexer_8h_ae3703f7999da4f1de951ce5430196d6e}\label{lexer_8h_ae3703f7999da4f1de951ce5430196d6e}} 
+\index{lexer.h@{lexer.h}!TOK\_CLASS@{TOK\_CLASS}}
+\index{TOK\_CLASS@{TOK\_CLASS}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_CLASS}{TOK\_CLASS}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+CLASS~1001}
+
+\mbox{\Hypertarget{lexer_8h_afd9e2886322b113a8aeea96d1c39c0e3}\label{lexer_8h_afd9e2886322b113a8aeea96d1c39c0e3}} 
+\index{lexer.h@{lexer.h}!TOK\_CLOSEBRACE@{TOK\_CLOSEBRACE}}
+\index{TOK\_CLOSEBRACE@{TOK\_CLOSEBRACE}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_CLOSEBRACE}{TOK\_CLOSEBRACE}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+CLOSEBRACE~2003}
+
+\mbox{\Hypertarget{lexer_8h_abc87063649e5a25c7e457481b1e108b9}\label{lexer_8h_abc87063649e5a25c7e457481b1e108b9}} 
+\index{lexer.h@{lexer.h}!TOK\_CLOSEBRACK@{TOK\_CLOSEBRACK}}
+\index{TOK\_CLOSEBRACK@{TOK\_CLOSEBRACK}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_CLOSEBRACK}{TOK\_CLOSEBRACK}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+CLOSEBRACK~2008}
+
+\mbox{\Hypertarget{lexer_8h_ac54a537f5c686a95a3c9c78fe8cb3378}\label{lexer_8h_ac54a537f5c686a95a3c9c78fe8cb3378}} 
+\index{lexer.h@{lexer.h}!TOK\_CLOSEPAREN@{TOK\_CLOSEPAREN}}
+\index{TOK\_CLOSEPAREN@{TOK\_CLOSEPAREN}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_CLOSEPAREN}{TOK\_CLOSEPAREN}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+CLOSEPAREN~2001}
+
+\mbox{\Hypertarget{lexer_8h_adf2c1bd40491696ea984450f55e477e9}\label{lexer_8h_adf2c1bd40491696ea984450f55e477e9}} 
+\index{lexer.h@{lexer.h}!TOK\_COLON@{TOK\_COLON}}
+\index{TOK\_COLON@{TOK\_COLON}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_COLON}{TOK\_COLON}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+COLON~2009}
+
+\mbox{\Hypertarget{lexer_8h_ae83b5d27d87a650e964b21698da02fda}\label{lexer_8h_ae83b5d27d87a650e964b21698da02fda}} 
+\index{lexer.h@{lexer.h}!TOK\_COMMA@{TOK\_COMMA}}
+\index{TOK\_COMMA@{TOK\_COMMA}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_COMMA}{TOK\_COMMA}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+COMMA~2005}
+
+\mbox{\Hypertarget{lexer_8h_a1ada1bb69477c5c2eeb9ae44998b682c}\label{lexer_8h_a1ada1bb69477c5c2eeb9ae44998b682c}} 
+\index{lexer.h@{lexer.h}!TOK\_DIV@{TOK\_DIV}}
+\index{TOK\_DIV@{TOK\_DIV}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_DIV}{TOK\_DIV}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+DIV~3003}
+
+\mbox{\Hypertarget{lexer_8h_ae0483d6ecf2d837783995a2ebf3b7ea7}\label{lexer_8h_ae0483d6ecf2d837783995a2ebf3b7ea7}} 
+\index{lexer.h@{lexer.h}!TOK\_DOT@{TOK\_DOT}}
+\index{TOK\_DOT@{TOK\_DOT}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_DOT}{TOK\_DOT}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+DOT~2006}
+
+\mbox{\Hypertarget{lexer_8h_a9f6f3e8c704f066e2d81e983f70d4ee4}\label{lexer_8h_a9f6f3e8c704f066e2d81e983f70d4ee4}} 
+\index{lexer.h@{lexer.h}!TOK\_ELSE@{TOK\_ELSE}}
+\index{TOK\_ELSE@{TOK\_ELSE}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_ELSE}{TOK\_ELSE}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+ELSE~1002}
+
+\mbox{\Hypertarget{lexer_8h_ac131d6cae18195f7c314dafa7c00393d}\label{lexer_8h_ac131d6cae18195f7c314dafa7c00393d}} 
+\index{lexer.h@{lexer.h}!TOK\_EOF@{TOK\_EOF}}
+\index{TOK\_EOF@{TOK\_EOF}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_EOF}{TOK\_EOF}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+EOF~4004}
+
+\mbox{\Hypertarget{lexer_8h_a5b4f369fb03faf87d9587e66a49b9492}\label{lexer_8h_a5b4f369fb03faf87d9587e66a49b9492}} 
+\index{lexer.h@{lexer.h}!TOK\_EQUAL@{TOK\_EQUAL}}
+\index{TOK\_EQUAL@{TOK\_EQUAL}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_EQUAL}{TOK\_EQUAL}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+EQUAL~3005}
+
+\mbox{\Hypertarget{lexer_8h_a4291799ae3dc8ce8cd392528fc6fb23a}\label{lexer_8h_a4291799ae3dc8ce8cd392528fc6fb23a}} 
+\index{lexer.h@{lexer.h}!TOK\_FALSE@{TOK\_FALSE}}
+\index{TOK\_FALSE@{TOK\_FALSE}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_FALSE}{TOK\_FALSE}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+FALSE~1003}
+
+\mbox{\Hypertarget{lexer_8h_a3867e462c2d373a53251ca0b835aada5}\label{lexer_8h_a3867e462c2d373a53251ca0b835aada5}} 
+\index{lexer.h@{lexer.h}!TOK\_FLOAT@{TOK\_FLOAT}}
+\index{TOK\_FLOAT@{TOK\_FLOAT}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_FLOAT}{TOK\_FLOAT}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+FLOAT~4002}
+
+\mbox{\Hypertarget{lexer_8h_a1de3eab4996d9ee50902d78a67df85e2}\label{lexer_8h_a1de3eab4996d9ee50902d78a67df85e2}} 
+\index{lexer.h@{lexer.h}!TOK\_FOR@{TOK\_FOR}}
+\index{TOK\_FOR@{TOK\_FOR}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_FOR}{TOK\_FOR}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+FOR~1004}
+
+\mbox{\Hypertarget{lexer_8h_a8ac3b78f1ab805646b6e1cb2a7d65cd7}\label{lexer_8h_a8ac3b78f1ab805646b6e1cb2a7d65cd7}} 
+\index{lexer.h@{lexer.h}!TOK\_FUN@{TOK\_FUN}}
+\index{TOK\_FUN@{TOK\_FUN}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_FUN}{TOK\_FUN}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+FUN~1005}
+
+\mbox{\Hypertarget{lexer_8h_af4b7d5b259e8b7b0b5cf1e14dd3f6be7}\label{lexer_8h_af4b7d5b259e8b7b0b5cf1e14dd3f6be7}} 
+\index{lexer.h@{lexer.h}!TOK\_GREATEQUAL@{TOK\_GREATEQUAL}}
+\index{TOK\_GREATEQUAL@{TOK\_GREATEQUAL}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_GREATEQUAL}{TOK\_GREATEQUAL}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+GREATEQUAL~3010}
+
+\mbox{\Hypertarget{lexer_8h_affdd47733cd935d380c9c4c7e7964268}\label{lexer_8h_affdd47733cd935d380c9c4c7e7964268}} 
+\index{lexer.h@{lexer.h}!TOK\_GREATER@{TOK\_GREATER}}
+\index{TOK\_GREATER@{TOK\_GREATER}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_GREATER}{TOK\_GREATER}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+GREATER~3008}
+
+\mbox{\Hypertarget{lexer_8h_a70d47ff670c89da199e7486621b64499}\label{lexer_8h_a70d47ff670c89da199e7486621b64499}} 
+\index{lexer.h@{lexer.h}!TOK\_IDENT@{TOK\_IDENT}}
+\index{TOK\_IDENT@{TOK\_IDENT}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_IDENT}{TOK\_IDENT}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+IDENT~4003}
+
+\mbox{\Hypertarget{lexer_8h_ab0d109cc3e36f227a132c83b7dfc48b0}\label{lexer_8h_ab0d109cc3e36f227a132c83b7dfc48b0}} 
+\index{lexer.h@{lexer.h}!TOK\_IF@{TOK\_IF}}
+\index{TOK\_IF@{TOK\_IF}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_IF}{TOK\_IF}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+IF~1006}
+
+\mbox{\Hypertarget{lexer_8h_a8c737829d180bcd6ccf72784a8554076}\label{lexer_8h_a8c737829d180bcd6ccf72784a8554076}} 
+\index{lexer.h@{lexer.h}!TOK\_INT@{TOK\_INT}}
+\index{TOK\_INT@{TOK\_INT}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_INT}{TOK\_INT}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+INT~4001}
+
+\mbox{\Hypertarget{lexer_8h_ad85c15745f06f05d95be191cae5506c0}\label{lexer_8h_ad85c15745f06f05d95be191cae5506c0}} 
+\index{lexer.h@{lexer.h}!TOK\_INVALIDLIT@{TOK\_INVALIDLIT}}
+\index{TOK\_INVALIDLIT@{TOK\_INVALIDLIT}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_INVALIDLIT}{TOK\_INVALIDLIT}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+INVALIDLIT~4006}
+
+\mbox{\Hypertarget{lexer_8h_a273777a39537940c55a6851bcc421591}\label{lexer_8h_a273777a39537940c55a6851bcc421591}} 
+\index{lexer.h@{lexer.h}!TOK\_LESS@{TOK\_LESS}}
+\index{TOK\_LESS@{TOK\_LESS}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_LESS}{TOK\_LESS}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+LESS~3007}
+
+\mbox{\Hypertarget{lexer_8h_a32c14b0cb82e4a86e80e93b80df955aa}\label{lexer_8h_a32c14b0cb82e4a86e80e93b80df955aa}} 
+\index{lexer.h@{lexer.h}!TOK\_LESSEQUAL@{TOK\_LESSEQUAL}}
+\index{TOK\_LESSEQUAL@{TOK\_LESSEQUAL}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_LESSEQUAL}{TOK\_LESSEQUAL}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+LESSEQUAL~3009}
+
+\mbox{\Hypertarget{lexer_8h_ab07ad6d40e03393c18199cec582fda49}\label{lexer_8h_ab07ad6d40e03393c18199cec582fda49}} 
+\index{lexer.h@{lexer.h}!TOK\_MINUS@{TOK\_MINUS}}
+\index{TOK\_MINUS@{TOK\_MINUS}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_MINUS}{TOK\_MINUS}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+MINUS~3001}
+
+\mbox{\Hypertarget{lexer_8h_a10c53a9029a59de820ba425afe145e3f}\label{lexer_8h_a10c53a9029a59de820ba425afe145e3f}} 
+\index{lexer.h@{lexer.h}!TOK\_MULT@{TOK\_MULT}}
+\index{TOK\_MULT@{TOK\_MULT}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_MULT}{TOK\_MULT}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+MULT~3002}
+
+\mbox{\Hypertarget{lexer_8h_a43b1409b1a16cc6744bc778fb7807d32}\label{lexer_8h_a43b1409b1a16cc6744bc778fb7807d32}} 
+\index{lexer.h@{lexer.h}!TOK\_NIL@{TOK\_NIL}}
+\index{TOK\_NIL@{TOK\_NIL}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_NIL}{TOK\_NIL}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+NIL~1007}
+
+\mbox{\Hypertarget{lexer_8h_a55a2a2dbeca6900f02410d5d601d41ee}\label{lexer_8h_a55a2a2dbeca6900f02410d5d601d41ee}} 
+\index{lexer.h@{lexer.h}!TOK\_NOT@{TOK\_NOT}}
+\index{TOK\_NOT@{TOK\_NOT}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_NOT}{TOK\_NOT}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+NOT~3011}
+
+\mbox{\Hypertarget{lexer_8h_a6da06325d5396a3e04d27a5214f89530}\label{lexer_8h_a6da06325d5396a3e04d27a5214f89530}} 
+\index{lexer.h@{lexer.h}!TOK\_NOTEQUAL@{TOK\_NOTEQUAL}}
+\index{TOK\_NOTEQUAL@{TOK\_NOTEQUAL}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_NOTEQUAL}{TOK\_NOTEQUAL}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+NOTEQUAL~3006}
+
+\mbox{\Hypertarget{lexer_8h_a6f6a42f8198000618ce044924432fd39}\label{lexer_8h_a6f6a42f8198000618ce044924432fd39}} 
+\index{lexer.h@{lexer.h}!TOK\_OPENBRACE@{TOK\_OPENBRACE}}
+\index{TOK\_OPENBRACE@{TOK\_OPENBRACE}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_OPENBRACE}{TOK\_OPENBRACE}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+OPENBRACE~2002}
+
+\mbox{\Hypertarget{lexer_8h_a46a05bea777429022c58da9bf5bd2c58}\label{lexer_8h_a46a05bea777429022c58da9bf5bd2c58}} 
+\index{lexer.h@{lexer.h}!TOK\_OPENBRACK@{TOK\_OPENBRACK}}
+\index{TOK\_OPENBRACK@{TOK\_OPENBRACK}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_OPENBRACK}{TOK\_OPENBRACK}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+OPENBRACK~2007}
+
+\mbox{\Hypertarget{lexer_8h_a32cb7376070c044d5df3d1c80bf3e245}\label{lexer_8h_a32cb7376070c044d5df3d1c80bf3e245}} 
+\index{lexer.h@{lexer.h}!TOK\_OPENPAREN@{TOK\_OPENPAREN}}
+\index{TOK\_OPENPAREN@{TOK\_OPENPAREN}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_OPENPAREN}{TOK\_OPENPAREN}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+OPENPAREN~2000}
+
+\mbox{\Hypertarget{lexer_8h_a8064ab10fd617cc4f21f43de6bdefa7c}\label{lexer_8h_a8064ab10fd617cc4f21f43de6bdefa7c}} 
+\index{lexer.h@{lexer.h}!TOK\_OR@{TOK\_OR}}
+\index{TOK\_OR@{TOK\_OR}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_OR}{TOK\_OR}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+OR~1008}
+
+\mbox{\Hypertarget{lexer_8h_a8064ab10fd617cc4f21f43de6bdefa7c}\label{lexer_8h_a8064ab10fd617cc4f21f43de6bdefa7c}} 
+\index{lexer.h@{lexer.h}!TOK\_OR@{TOK\_OR}}
+\index{TOK\_OR@{TOK\_OR}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_OR}{TOK\_OR}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+OR~3013}
+
+\mbox{\Hypertarget{lexer_8h_a4fd81c08ba9c673cec1309d6df79d970}\label{lexer_8h_a4fd81c08ba9c673cec1309d6df79d970}} 
+\index{lexer.h@{lexer.h}!TOK\_PLUS@{TOK\_PLUS}}
+\index{TOK\_PLUS@{TOK\_PLUS}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_PLUS}{TOK\_PLUS}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+PLUS~3000}
+
+\mbox{\Hypertarget{lexer_8h_a179835aeb3d0b90803c25cb89cbe5c8d}\label{lexer_8h_a179835aeb3d0b90803c25cb89cbe5c8d}} 
+\index{lexer.h@{lexer.h}!TOK\_PRINT@{TOK\_PRINT}}
+\index{TOK\_PRINT@{TOK\_PRINT}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_PRINT}{TOK\_PRINT}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+PRINT~1009}
+
+\mbox{\Hypertarget{lexer_8h_a954c1481c04f241a5100c471e114ebce}\label{lexer_8h_a954c1481c04f241a5100c471e114ebce}} 
+\index{lexer.h@{lexer.h}!TOK\_RETURN@{TOK\_RETURN}}
+\index{TOK\_RETURN@{TOK\_RETURN}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_RETURN}{TOK\_RETURN}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+RETURN~1010}
+
+\mbox{\Hypertarget{lexer_8h_aeed3603d6bcfa2873994098d2bffe4be}\label{lexer_8h_aeed3603d6bcfa2873994098d2bffe4be}} 
+\index{lexer.h@{lexer.h}!TOK\_SEMICOLON@{TOK\_SEMICOLON}}
+\index{TOK\_SEMICOLON@{TOK\_SEMICOLON}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_SEMICOLON}{TOK\_SEMICOLON}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+SEMICOLON~2004}
+
+\mbox{\Hypertarget{lexer_8h_a438ebcf2bfac5fd8af5356f3c0305839}\label{lexer_8h_a438ebcf2bfac5fd8af5356f3c0305839}} 
+\index{lexer.h@{lexer.h}!TOK\_STRING@{TOK\_STRING}}
+\index{TOK\_STRING@{TOK\_STRING}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_STRING}{TOK\_STRING}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+STRING~4000}
+
+\mbox{\Hypertarget{lexer_8h_a45c9b41e536b95869f4f2d51efee44bc}\label{lexer_8h_a45c9b41e536b95869f4f2d51efee44bc}} 
+\index{lexer.h@{lexer.h}!TOK\_SUPER@{TOK\_SUPER}}
+\index{TOK\_SUPER@{TOK\_SUPER}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_SUPER}{TOK\_SUPER}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+SUPER~1011}
+
+\mbox{\Hypertarget{lexer_8h_a4d2832cb668a76d058c60d9b55f408d3}\label{lexer_8h_a4d2832cb668a76d058c60d9b55f408d3}} 
+\index{lexer.h@{lexer.h}!TOK\_THIS@{TOK\_THIS}}
+\index{TOK\_THIS@{TOK\_THIS}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_THIS}{TOK\_THIS}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+THIS~1012}
+
+\mbox{\Hypertarget{lexer_8h_a041d9da05e8f77c6de9303ce416ba2b6}\label{lexer_8h_a041d9da05e8f77c6de9303ce416ba2b6}} 
+\index{lexer.h@{lexer.h}!TOK\_TRUE@{TOK\_TRUE}}
+\index{TOK\_TRUE@{TOK\_TRUE}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_TRUE}{TOK\_TRUE}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+TRUE~1013}
+
+\mbox{\Hypertarget{lexer_8h_ac6cac6c403755bb4cee90be276e1cb83}\label{lexer_8h_ac6cac6c403755bb4cee90be276e1cb83}} 
+\index{lexer.h@{lexer.h}!TOK\_UNKNOWN@{TOK\_UNKNOWN}}
+\index{TOK\_UNKNOWN@{TOK\_UNKNOWN}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_UNKNOWN}{TOK\_UNKNOWN}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+UNKNOWN~4005}
+
+\mbox{\Hypertarget{lexer_8h_aec6fbb7100afcb455b2f17f11f1f3594}\label{lexer_8h_aec6fbb7100afcb455b2f17f11f1f3594}} 
+\index{lexer.h@{lexer.h}!TOK\_VAR@{TOK\_VAR}}
+\index{TOK\_VAR@{TOK\_VAR}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_VAR}{TOK\_VAR}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+VAR~1014}
+
+\mbox{\Hypertarget{lexer_8h_adb5fedc0036eb450578443718f89edef}\label{lexer_8h_adb5fedc0036eb450578443718f89edef}} 
+\index{lexer.h@{lexer.h}!TOK\_WHILE@{TOK\_WHILE}}
+\index{TOK\_WHILE@{TOK\_WHILE}!lexer.h@{lexer.h}}
+\doxysubsubsection{\texorpdfstring{TOK\_WHILE}{TOK\_WHILE}}
+{\footnotesize\ttfamily \#define TOK\+\_\+\+WHILE~1015}
+

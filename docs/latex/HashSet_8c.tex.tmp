@@ -1,0 +1,146 @@
+\hypertarget{HashSet_8c}{}\doxysection{parser/\+Hash\+Set.c File Reference}
+\label{HashSet_8c}\index{parser/HashSet.c@{parser/HashSet.c}}
+{\ttfamily \#include \char`\"{}Hash\+Set.\+h\char`\"{}}\newline
+Include dependency graph for Hash\+Set.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{HashSet_8c_a2fa53544d2918e028d920409ac006b33}{hash}} (const char $\ast$str)
+\begin{DoxyCompactList}\small\item\em Hash function for \mbox{\hyperlink{structHashSet}{Hash\+Set}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$ \mbox{\hyperlink{HashSet_8c_a7dfd284cdeba7b134c168b73b61c02f5}{create\+Hash\+Set}} ()
+\begin{DoxyCompactList}\small\item\em Initalizes an empty pointer with a blank \mbox{\hyperlink{structHashSet}{Hash\+Set}} -\/ pointer takes ownership. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HashSet_8c_a6268094e38dabd33928cce14f9421c13}{resize}} (\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$set)
+\begin{DoxyCompactList}\small\item\em Doubles the \mbox{\hyperlink{structHashSet}{Hash\+Set}}\textquotesingle{}s size. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{HashSet_8c_ad84f39b4b1edc5c494be02ad1bb7f1ba}{insert}} (\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$set, const char $\ast$key)
+\begin{DoxyCompactList}\small\item\em Inserts a new string into the \mbox{\hyperlink{structHashSet}{Hash\+Set}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{HashSet_8c_ade399faad37180332d5759ad67017574}{contains}} (\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$set, const char $\ast$key)
+\begin{DoxyCompactList}\small\item\em Checks if a string is in the \mbox{\hyperlink{structHashSet}{Hash\+Set}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{HashSet_8c_aec8f091df5c0bb0dd9c893b64cff171f}{remove\+Key}} (\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$set, const char $\ast$key)
+\begin{DoxyCompactList}\small\item\em Removes a string from the \mbox{\hyperlink{structHashSet}{Hash\+Set}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HashSet_8c_afa2d19a368247416e9fa296a337b5465}{free\+Hash\+Set}} (\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$set)
+\begin{DoxyCompactList}\small\item\em Deletes the \mbox{\hyperlink{structHashSet}{Hash\+Set}} from the heap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{HashSet_8c_ade399faad37180332d5759ad67017574}\label{HashSet_8c_ade399faad37180332d5759ad67017574}} 
+\index{HashSet.c@{HashSet.c}!contains@{contains}}
+\index{contains@{contains}!HashSet.c@{HashSet.c}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily bool contains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$}]{set,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+Checks if a string is in the \mbox{\hyperlink{structHashSet}{Hash\+Set}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \mbox{\hyperlink{structHashSet}{Hash\+Set}} we are searching \\
+\hline
+{\em key} & The string we are searching for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Weather or not the string was found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{HashSet_8c_a7dfd284cdeba7b134c168b73b61c02f5}\label{HashSet_8c_a7dfd284cdeba7b134c168b73b61c02f5}} 
+\index{HashSet.c@{HashSet.c}!createHashSet@{createHashSet}}
+\index{createHashSet@{createHashSet}!HashSet.c@{HashSet.c}}
+\doxysubsubsection{\texorpdfstring{createHashSet()}{createHashSet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$ create\+Hash\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initalizes an empty pointer with a blank \mbox{\hyperlink{structHashSet}{Hash\+Set}} -\/ pointer takes ownership. 
+
+\begin{DoxyReturn}{Returns}
+The initalized \mbox{\hyperlink{structHashSet}{Hash\+Set}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{HashSet_8c_afa2d19a368247416e9fa296a337b5465}\label{HashSet_8c_afa2d19a368247416e9fa296a337b5465}} 
+\index{HashSet.c@{HashSet.c}!freeHashSet@{freeHashSet}}
+\index{freeHashSet@{freeHashSet}!HashSet.c@{HashSet.c}}
+\doxysubsubsection{\texorpdfstring{freeHashSet()}{freeHashSet()}}
+{\footnotesize\ttfamily void free\+Hash\+Set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$}]{set }\end{DoxyParamCaption})}
+
+
+
+Deletes the \mbox{\hyperlink{structHashSet}{Hash\+Set}} from the heap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & The \mbox{\hyperlink{structHashSet}{Hash\+Set}} to delete \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{HashSet_8c_a2fa53544d2918e028d920409ac006b33}\label{HashSet_8c_a2fa53544d2918e028d920409ac006b33}} 
+\index{HashSet.c@{HashSet.c}!hash@{hash}}
+\index{hash@{hash}!HashSet.c@{HashSet.c}}
+\doxysubsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily unsigned long hash (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Hash function for \mbox{\hyperlink{structHashSet}{Hash\+Set}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string we a generating a hash value for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The hash value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{HashSet_8c_ad84f39b4b1edc5c494be02ad1bb7f1ba}\label{HashSet_8c_ad84f39b4b1edc5c494be02ad1bb7f1ba}} 
+\index{HashSet.c@{HashSet.c}!insert@{insert}}
+\index{insert@{insert}!HashSet.c@{HashSet.c}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily bool insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$}]{set,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+Inserts a new string into the \mbox{\hyperlink{structHashSet}{Hash\+Set}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \mbox{\hyperlink{structHashSet}{Hash\+Set}} we are inserting to \\
+\hline
+{\em key} & String key to identify node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The success of the insertion 
+\end{DoxyReturn}
+\mbox{\Hypertarget{HashSet_8c_aec8f091df5c0bb0dd9c893b64cff171f}\label{HashSet_8c_aec8f091df5c0bb0dd9c893b64cff171f}} 
+\index{HashSet.c@{HashSet.c}!removeKey@{removeKey}}
+\index{removeKey@{removeKey}!HashSet.c@{HashSet.c}}
+\doxysubsubsection{\texorpdfstring{removeKey()}{removeKey()}}
+{\footnotesize\ttfamily bool remove\+Key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$}]{set,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+Removes a string from the \mbox{\hyperlink{structHashSet}{Hash\+Set}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & The \mbox{\hyperlink{structHashSet}{Hash\+Set}} we are removing from \\
+\hline
+{\em key} & The string we want to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sucess of the removal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{HashSet_8c_a6268094e38dabd33928cce14f9421c13}\label{HashSet_8c_a6268094e38dabd33928cce14f9421c13}} 
+\index{HashSet.c@{HashSet.c}!resize@{resize}}
+\index{resize@{resize}!HashSet.c@{HashSet.c}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily void resize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHashSet}{Hash\+Set}} $\ast$}]{set }\end{DoxyParamCaption})}
+
+
+
+Doubles the \mbox{\hyperlink{structHashSet}{Hash\+Set}}\textquotesingle{}s size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & \mbox{\hyperlink{structHashSet}{Hash\+Set}} to resize \\
+\hline
+\end{DoxyParams}
