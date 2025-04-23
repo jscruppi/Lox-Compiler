@@ -61,5 +61,6 @@
 #define TOK_IDENT       4003
 #define TOK_EOF         4004
 #define TOK_UNKNOWN     4005
+#define TOK_INVALIDLIT  4006
 
 #endif

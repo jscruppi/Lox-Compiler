@@ -1,3 +1,4 @@
 build/
 lexer/build/
 .cache/
+errors.txt

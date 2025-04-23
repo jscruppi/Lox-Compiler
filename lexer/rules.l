@@ -62,9 +62,9 @@
 [0-9]+              {return TOK_INT;}
 [0-9]+\.[0-9]+      {return TOK_FLOAT;}
 \"[^\n]{0,80}\"     {return TOK_STRING;}
-\"[^\n]{81,}\"      {return TOK_UNKNOWN;}
+\"{81,}\"      {return TOK_INVALIDLIT;}
 [A-Za-z_][A-Za-z0-9_]{0,32} {return TOK_IDENT;}
-[A-Za-z_][A-Za-z0-9_]{33,}  {return TOK_UNKNOWN;}
+[A-Za-z_][A-Za-z0-9_]{33,}  {return TOK_INVALIDLIT;}
  
 [ \t\r]+
 

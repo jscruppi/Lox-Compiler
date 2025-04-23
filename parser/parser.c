@@ -8,6 +8,7 @@
 
 #include "parser.h"
 #include "lexer/lexer.h"
+#include "errors.h"
 #include <string.h>
 #include <assert.h>
 
@@ -115,6 +116,8 @@ int lex(){
         case TOK_IDENT:             token_str = (char*)"IDENT"; break;
 
         case TOK_EOF:               token_str = (char*)"==EOF==";break;
+        case TOK_INVALIDLIT:
+            checkError110();
 
         default:                    
             printf("Unknown Token: |%s|\n", yytext);
@@ -194,12 +197,15 @@ void classDecl(){
     lex();
 
     if(nextToken == TOK_LESS){
+        checkError203();
         if(print_debug)output("<");
         lex();
+        checkError101();
         if(print_debug)output("IDENTIFIER");
         lex();
     }
 
+    checkError201();
     if(print_debug)output("{");
     lex();
 
@@ -207,6 +213,7 @@ void classDecl(){
         function();
     }
 
+    checkError201();
     if(print_debug)output("}");
     lex();
 
@@ -235,6 +242,7 @@ void function(){
     insert(symbolTable, yytext);
     lex();
 
+    checkError202();
     if(print_debug)output("(");
     lex();
 
@@ -243,6 +251,7 @@ void function(){
         lex();
 
         while(nextToken == TOK_COMMA){
+            checkError205();
             if(print_debug)output(",");
             lex();
             if(print_debug)output("IDENTIFIER");
@@ -250,6 +259,7 @@ void function(){
         }
     }
 
+    checkError202();
     if(print_debug)output(")");
     lex();
 
@@ -265,10 +275,12 @@ void varDecl(){
     lex();
 
     if(print_debug)output("IDENTIFIER");
+    checkError102();
     insert(symbolTable, yytext);
     lex();
 
     if(nextToken == TOK_ASSIGN){
+        checkError203();
         if(print_debug)output("=");
         lex();
         
@@ -276,6 +288,7 @@ void varDecl(){
         expression();
     }
 
+    checkError200();
     if(print_debug)output(";");
     lex();
 
@@ -339,12 +352,14 @@ void ifStmt(){
     if(print_debug)output("if");
     lex();
 
+    checkError202();
     if(print_debug)output("(");
     lex();
 
     if(print_debug)output("expression");
     expression();
 
+    checkError202();
     if(print_debug)output(")");
     lex();
 
@@ -376,6 +391,7 @@ void printStmt(){
     if(print_debug)output("expression");
     expression();
 
+    checkError200();
     if(print_debug)output(";");
     lex();
 
@@ -397,6 +413,7 @@ void returnStmt(){
         expression();
     }
 
+    checkError200();
     if(print_debug)output(";");
     lex();
 
@@ -413,12 +430,14 @@ void whileStmt(){
     if(print_debug)output("while");
     lex();
 
+    checkError202();
     if(print_debug)output("(");
     lex();
 
     if(print_debug)output("expression");
     expression();
 
+    checkError202();
     if(print_debug)output(")");
     lex();
 
@@ -435,6 +454,7 @@ void block(){
     if(print_debug){psp(); printf("enter <block>\n");}
     level++;
 
+    checkError201();
     if(print_debug)output("{");
     lex();
 
@@ -443,6 +463,7 @@ void block(){
         declaration();
     }
 
+    checkError201();
     if(print_debug)output("}");
     lex();
 
@@ -459,6 +480,7 @@ void exprStmt(){
     if(print_debug)output("expression");
     expression();
 
+    checkError200();
     if(print_debug)output(";");
     lex();
 
@@ -482,6 +504,7 @@ void forStmt(){
     if(print_debug)output("for");
     lex();
 
+    checkError202();
     if(print_debug)output("(");
     lex();
 
@@ -499,8 +522,9 @@ void forStmt(){
         lex();
     }
     else{
-        printf("Error in forStmt()\n");
-        exit(EXIT_FAILURE);
+        //printf("Error in forStmt()\n");
+        //exit(EXIT_FAILURE);
+        checkError909();
     }
 
     // expression? 
@@ -508,6 +532,7 @@ void forStmt(){
         if(print_debug)output("expression");
         expression();
 
+        checkError200();
         if(print_debug)output(";");
         lex();
     }
@@ -518,6 +543,7 @@ void forStmt(){
         expression();
     }
 
+    checkError202();
     if(print_debug)output(")");
     lex();
 
@@ -757,7 +783,7 @@ void unary(){
         unary();
     }
     else{
-        // TODO: throw some kind of error here
+        checkError909();
     }
 
     level--;
@@ -797,13 +823,16 @@ void call(){
                 expression();
             }
 
+            checkError202();
             if(print_debug)output("close-paren");
             lex();
         }
         else
         {
+            checkError203();
             if (print_debug)output(".");
             lex();
+            //checkError100();
             if (print_debug)output("IDENTIFIER");
             lex();
         }
@@ -870,6 +899,7 @@ void primary(){
             lex();
             if(print_debug)output(".");
             lex();
+            checkError100();
             if(print_debug)output("IDENTIFIER");
             lex();
             break;
@@ -880,8 +910,7 @@ void primary(){
             break;
 
         default:
-            printf("In primary -- found incorrect token\n");
-            exit(EXIT_FAILURE);
+            checkError909();
             break;
     } 
 
