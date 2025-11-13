@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 void throwMessage(const char* message){
-    printf("Error [Line #%d]\n", &yylineno);
+    printf("Error [Line #%d]\n", yylineno);
     printf("\t%s\n",message);
     exit(EXIT_FAILURE);
 }
